@@ -37,7 +37,14 @@ namespace AnalisisNumerico2024
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            CalcularBiseccionOReglaFalsa();
+            if(metodoSeleccionado=="Bisección" || metodoSeleccionado == "Regla Falsa")
+            {
+                CalcularBiseccionOReglaFalsa();
+            }
+            else
+            {
+                CalcularTangenteOSecante();
+            }
         }
 
         private void btnBiseccion_Click(object sender, EventArgs e)
@@ -214,11 +221,13 @@ namespace AnalisisNumerico2024
         // Método para calcular los resultados del método de Tangente o Secante
         private void CalcularTangenteOSecante()
         {
+            double xi, xd, tolerancia, iteraciones;
             //Verifico si algun campo esta vacio
             if (string.IsNullOrWhiteSpace(txtFuncion.Text) ||
-                string.IsNullOrWhiteSpace(txtXi.Text) ||
-                string.IsNullOrWhiteSpace(txtTolerancia.Text) ||
-                string.IsNullOrWhiteSpace(txtIteracionesMax.Text))
+                string.IsNullOrWhiteSpace(metodoSeleccionado) ||
+                !double.TryParse(txtXi.Text, out xi) ||   // Convertir txtXi a double
+                !double.TryParse(txtTolerancia.Text, out tolerancia) ||   // Convertir txtTolerancia a double
+                !double.TryParse(txtIteracionesMax.Text, out iteraciones)) // Convertir txtIteraciones a double
             {
                 MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
