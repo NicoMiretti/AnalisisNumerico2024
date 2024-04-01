@@ -23,7 +23,6 @@ namespace AnalisisNumerico2024
                     break;
 
                 case "Regla Falsa":
-                    analizadorFuncion.Sintaxis(funcion, 'x');
                     xr = ((analizadorFuncion.EvaluaFx(xd) * xi - analizadorFuncion.EvaluaFx(xi) * xd) / (analizadorFuncion.EvaluaFx(xd) - analizadorFuncion.EvaluaFx(xi)));
                     break;
 
