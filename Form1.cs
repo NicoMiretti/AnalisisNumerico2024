@@ -5,7 +5,15 @@ namespace AnalisisNumerico2024
     public partial class Form1 : Form
     {
         Calculo analizadorFuncion = new Calculo();
-        double CalcularXr(string metodo, double xi, double xd)
+
+        // Variable para almacenar el método seleccionado
+        private string metodoSeleccionado;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        double CalcularXr(string metodo, string funcion, double xi, double xd)
         {
             double xr = 0;
             switch (metodo)
@@ -15,6 +23,7 @@ namespace AnalisisNumerico2024
                     break;
 
                 case "Regla Falsa":
+                    analizadorFuncion.Sintaxis(funcion, 'x');
                     xr = ((analizadorFuncion.EvaluaFx(xd) * xi - analizadorFuncion.EvaluaFx(xi) * xd) / (analizadorFuncion.EvaluaFx(xd) - analizadorFuncion.EvaluaFx(xi)));
                     break;
 
@@ -26,12 +35,7 @@ namespace AnalisisNumerico2024
             }
             return xr;
         }
-        // Variable para almacenar el método seleccionado
-        private string metodoSeleccionado;
-        public Form1()
-        {
-            InitializeComponent();
-        }
+
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             CalcularBiseccionOReglaFalsa();
@@ -127,6 +131,7 @@ namespace AnalisisNumerico2024
             double xi, xd, tolerancia, iteraciones;
             //Verifico si algun campo esta vacio
             if (string.IsNullOrWhiteSpace(txtFuncion.Text) ||
+                string.IsNullOrWhiteSpace(metodoSeleccionado) ||
                 !double.TryParse(txtXi.Text, out xi) ||   // Convertir txtXi a double
                 !double.TryParse(txtXd.Text, out xd) ||   // Convertir txtXd a double
                 !double.TryParse(txtTolerancia.Text, out tolerancia) ||   // Convertir txtTolerancia a double
@@ -166,7 +171,7 @@ namespace AnalisisNumerico2024
                         double xrAnterior = 0, xr = 0, error = 0;
                         for (int i = 1; i <= iteraciones; i++)
                         {
-                            xr = CalcularXr(metodoSeleccionado, xi, xd);
+                            xr = CalcularXr(metodoSeleccionado, txtFuncion.Text, xi, xd);
                             error = Math.Abs((xr - xrAnterior) / xr);
                             if (Math.Abs(analizadorFuncion.EvaluaFx(xr)) < tolerancia || error < tolerancia)
                             {
@@ -188,12 +193,16 @@ namespace AnalisisNumerico2024
                                 }
                                 xrAnterior = xr;
                             }
+                            if (i == iteraciones)
+                            {
+                                txtRaiz.Text = xr.ToString();
+                                txtConverge.Text = "No";
+                                txtCantIteraciones.Text = "Superó las iteraciones";
+                                txtErrorRelativ.Text = error.ToString();
+                            }
                         }
-                        txtRaiz.Text = xr.ToString();
-                        txtConverge.Text = "No";
-                        txtCantIteraciones.Text = "Superó las iteraciones";
-                        txtErrorRelativ.Text = error.ToString();
                     }
+
                 }
             }
             else
