@@ -28,119 +28,329 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
+            btnCalcular = new Button();
+            btnBiseccion = new Button();
+            btnReglaFalsa = new Button();
+            btnTangente = new Button();
+            btnSecante = new Button();
+            seleccioneMetodo = new Label();
+            metodosCerrados = new Label();
+            metodosAbiertos = new Label();
+            lblMetodoSeleccionado = new Label();
+            lblMetodoSelecc = new Label();
+            IngreseLosDatos = new Label();
+            lblFx = new Label();
+            txtFuncion = new TextBox();
+            txtXi = new TextBox();
+            lblXi = new Label();
+            txtXd = new TextBox();
+            lblXd = new Label();
+            txtTolerancia = new TextBox();
+            lblTolerancia = new Label();
+            txtIteracionesMax = new TextBox();
+            lblIteracionesMax = new Label();
+            lblConverge = new Label();
+            txtConverge = new TextBox();
+            txtCantIteraciones = new TextBox();
+            lblCantIteraciones = new Label();
+            txtRaiz = new TextBox();
+            lblRaiz = new Label();
+            txtErrorRelativ = new TextBox();
+            lblErrorRelativ = new Label();
+            SuspendLayout();
             // 
-            // button1
+            // btnCalcular
             // 
-            this.button1.Location = new System.Drawing.Point(593, 127);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Bisección";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            btnCalcular.Location = new Point(298, 279);
+            btnCalcular.Name = "btnCalcular";
+            btnCalcular.Size = new Size(174, 28);
+            btnCalcular.TabIndex = 0;
+            btnCalcular.Text = "Calcular";
+            btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
             // 
-            // textBox1
+            // btnBiseccion
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Entradas";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            btnBiseccion.Location = new Point(32, 57);
+            btnBiseccion.Name = "btnBiseccion";
+            btnBiseccion.Size = new Size(160, 45);
+            btnBiseccion.TabIndex = 1;
+            btnBiseccion.Text = "Bisección";
+            btnBiseccion.UseVisualStyleBackColor = true;
+            btnBiseccion.Click += btnBiseccion_Click;
             // 
-            // button2
+            // btnReglaFalsa
             // 
-            this.button2.Location = new System.Drawing.Point(593, 180);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Regla Falsa";
-            this.button2.UseVisualStyleBackColor = true;
+            btnReglaFalsa.Location = new Point(198, 57);
+            btnReglaFalsa.Name = "btnReglaFalsa";
+            btnReglaFalsa.Size = new Size(160, 45);
+            btnReglaFalsa.TabIndex = 2;
+            btnReglaFalsa.Text = "Regla Falsa";
+            btnReglaFalsa.UseVisualStyleBackColor = true;
+            btnReglaFalsa.Click += btnReglaFalsa_Click;
             // 
-            // button3
+            // btnTangente
             // 
-            this.button3.Location = new System.Drawing.Point(593, 276);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Tangente";
-            this.button3.UseVisualStyleBackColor = true;
+            btnTangente.Location = new Point(423, 57);
+            btnTangente.Name = "btnTangente";
+            btnTangente.Size = new Size(160, 45);
+            btnTangente.TabIndex = 3;
+            btnTangente.Text = "Tangente";
+            btnTangente.UseVisualStyleBackColor = true;
+            btnTangente.Click += btnTangente_Click;
             // 
-            // button4
+            // btnSecante
             // 
-            this.button4.Location = new System.Drawing.Point(593, 325);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Secante";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            btnSecante.Location = new Point(589, 57);
+            btnSecante.Name = "btnSecante";
+            btnSecante.Size = new Size(160, 45);
+            btnSecante.TabIndex = 4;
+            btnSecante.Text = "Secante";
+            btnSecante.UseVisualStyleBackColor = true;
+            btnSecante.Click += btnSecante_Click;
             // 
-            // textBox2
+            // seleccioneMetodo
             // 
-            this.textBox2.Location = new System.Drawing.Point(580, 78);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 23);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "Cerrados";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            seleccioneMetodo.AutoSize = true;
+            seleccioneMetodo.Location = new Point(32, 21);
+            seleccioneMetodo.Name = "seleccioneMetodo";
+            seleccioneMetodo.Size = new Size(136, 15);
+            seleccioneMetodo.TabIndex = 5;
+            seleccioneMetodo.Text = "1) Seleccione el método:";
             // 
-            // textBox3
+            // metodosCerrados
             // 
-            this.textBox3.Location = new System.Drawing.Point(580, 230);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 23);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "Abiertos";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            metodosCerrados.AutoSize = true;
+            metodosCerrados.Location = new Point(145, 39);
+            metodosCerrados.Name = "metodosCerrados";
+            metodosCerrados.Size = new Size(102, 15);
+            metodosCerrados.TabIndex = 6;
+            metodosCerrados.Text = "Metodos cerrados";
             // 
-            // textBox4
+            // metodosAbiertos
             // 
-            this.textBox4.Location = new System.Drawing.Point(53, 116);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(39, 23);
-            this.textBox4.TabIndex = 8;
-            this.textBox4.Text = " F(x) =";
+            metodosAbiertos.AutoSize = true;
+            metodosAbiertos.Location = new Point(536, 39);
+            metodosAbiertos.Name = "metodosAbiertos";
+            metodosAbiertos.Size = new Size(99, 15);
+            metodosAbiertos.TabIndex = 7;
+            metodosAbiertos.Text = "Metodos abiertos";
             // 
-            // Unidad1
+            // lblMetodoSeleccionado
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Name = "Unidad1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            lblMetodoSeleccionado.AutoSize = true;
+            lblMetodoSeleccionado.Location = new Point(162, 249);
+            lblMetodoSeleccionado.Name = "lblMetodoSeleccionado";
+            lblMetodoSeleccionado.Size = new Size(171, 15);
+            lblMetodoSeleccionado.TabIndex = 8;
+            lblMetodoSeleccionado.Text = "No seleccionó ningún método.";
+            // 
+            // lblMetodoSelecc
+            // 
+            lblMetodoSelecc.AutoSize = true;
+            lblMetodoSelecc.Location = new Point(32, 249);
+            lblMetodoSelecc.Name = "lblMetodoSelecc";
+            lblMetodoSelecc.Size = new Size(124, 15);
+            lblMetodoSelecc.TabIndex = 9;
+            lblMetodoSelecc.Text = "Método seleccionado:";
+            // 
+            // IngreseLosDatos
+            // 
+            IngreseLosDatos.AutoSize = true;
+            IngreseLosDatos.Location = new Point(32, 127);
+            IngreseLosDatos.Name = "IngreseLosDatos";
+            IngreseLosDatos.Size = new Size(167, 15);
+            IngreseLosDatos.TabIndex = 10;
+            IngreseLosDatos.Text = "2) Ingrese los siguientes datos:";
+            // 
+            // lblFx
+            // 
+            lblFx.AutoSize = true;
+            lblFx.Location = new Point(68, 156);
+            lblFx.Name = "lblFx";
+            lblFx.Size = new Size(39, 15);
+            lblFx.TabIndex = 11;
+            lblFx.Text = "F(X) =";
+            // 
+            // txtFuncion
+            // 
+            txtFuncion.Location = new Point(113, 153);
+            txtFuncion.Name = "txtFuncion";
+            txtFuncion.Size = new Size(210, 23);
+            txtFuncion.TabIndex = 12;
+            // 
+            // txtXi
+            // 
+            txtXi.Location = new Point(113, 194);
+            txtXi.Name = "txtXi";
+            txtXi.Size = new Size(79, 23);
+            txtXi.TabIndex = 14;
+            // 
+            // lblXi
+            // 
+            lblXi.AutoSize = true;
+            lblXi.Location = new Point(79, 197);
+            lblXi.Name = "lblXi";
+            lblXi.Size = new Size(28, 15);
+            lblXi.TabIndex = 13;
+            lblXi.Text = "Xi =";
+            // 
+            // txtXd
+            // 
+            txtXd.Location = new Point(244, 194);
+            txtXd.Name = "txtXd";
+            txtXd.Size = new Size(79, 23);
+            txtXd.TabIndex = 16;
+            // 
+            // lblXd
+            // 
+            lblXd.AutoSize = true;
+            lblXd.Location = new Point(206, 197);
+            lblXd.Name = "lblXd";
+            lblXd.Size = new Size(32, 15);
+            lblXd.TabIndex = 15;
+            lblXd.Text = "Xd =";
+            // 
+            // txtTolerancia
+            // 
+            txtTolerancia.Location = new Point(477, 153);
+            txtTolerancia.Name = "txtTolerancia";
+            txtTolerancia.Size = new Size(112, 23);
+            txtTolerancia.TabIndex = 18;
+            // 
+            // lblTolerancia
+            // 
+            lblTolerancia.AutoSize = true;
+            lblTolerancia.Location = new Point(400, 156);
+            lblTolerancia.Name = "lblTolerancia";
+            lblTolerancia.Size = new Size(71, 15);
+            lblTolerancia.TabIndex = 17;
+            lblTolerancia.Text = "Tolerancia =";
+            // 
+            // txtIteracionesMax
+            // 
+            txtIteracionesMax.Location = new Point(511, 194);
+            txtIteracionesMax.Name = "txtIteracionesMax";
+            txtIteracionesMax.Size = new Size(79, 23);
+            txtIteracionesMax.TabIndex = 20;
+            // 
+            // lblIteracionesMax
+            // 
+            lblIteracionesMax.AutoSize = true;
+            lblIteracionesMax.Location = new Point(401, 197);
+            lblIteracionesMax.Name = "lblIteracionesMax";
+            lblIteracionesMax.Size = new Size(104, 15);
+            lblIteracionesMax.TabIndex = 19;
+            lblIteracionesMax.Text = "Iteraciones máx. =";
+            // 
+            // lblConverge
+            // 
+            lblConverge.AutoSize = true;
+            lblConverge.Location = new Point(177, 342);
+            lblConverge.Name = "lblConverge";
+            lblConverge.Size = new Size(61, 15);
+            lblConverge.TabIndex = 21;
+            lblConverge.Text = "Converge:";
+            // 
+            // txtConverge
+            // 
+            txtConverge.Location = new Point(244, 339);
+            txtConverge.Name = "txtConverge";
+            txtConverge.ReadOnly = true;
+            txtConverge.Size = new Size(115, 23);
+            txtConverge.TabIndex = 22;
+            // 
+            // txtCantIteraciones
+            // 
+            txtCantIteraciones.Location = new Point(280, 377);
+            txtCantIteraciones.Name = "txtCantIteraciones";
+            txtCantIteraciones.ReadOnly = true;
+            txtCantIteraciones.Size = new Size(79, 23);
+            txtCantIteraciones.TabIndex = 24;
+            // 
+            // lblCantIteraciones
+            // 
+            lblCantIteraciones.AutoSize = true;
+            lblCantIteraciones.Location = new Point(176, 380);
+            lblCantIteraciones.Name = "lblCantIteraciones";
+            lblCantIteraciones.Size = new Size(98, 15);
+            lblCantIteraciones.TabIndex = 23;
+            lblCantIteraciones.Text = "Cant. Iteraciones:";
+            // 
+            // txtRaiz
+            // 
+            txtRaiz.Location = new Point(462, 339);
+            txtRaiz.Name = "txtRaiz";
+            txtRaiz.ReadOnly = true;
+            txtRaiz.Size = new Size(108, 23);
+            txtRaiz.TabIndex = 25;
+            // 
+            // lblRaiz
+            // 
+            lblRaiz.AutoSize = true;
+            lblRaiz.Location = new Point(395, 342);
+            lblRaiz.Name = "lblRaiz";
+            lblRaiz.Size = new Size(61, 15);
+            lblRaiz.TabIndex = 26;
+            lblRaiz.Text = "Raíz (Xr) =";
+            // 
+            // txtErrorRelativ
+            // 
+            txtErrorRelativ.Location = new Point(477, 377);
+            txtErrorRelativ.Name = "txtErrorRelativ";
+            txtErrorRelativ.ReadOnly = true;
+            txtErrorRelativ.Size = new Size(93, 23);
+            txtErrorRelativ.TabIndex = 28;
+            // 
+            // lblErrorRelativ
+            // 
+            lblErrorRelativ.AutoSize = true;
+            lblErrorRelativ.Location = new Point(395, 380);
+            lblErrorRelativ.Name = "lblErrorRelativ";
+            lblErrorRelativ.Size = new Size(76, 15);
+            lblErrorRelativ.TabIndex = 27;
+            lblErrorRelativ.Text = "Error Relativ.:";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(txtErrorRelativ);
+            Controls.Add(lblErrorRelativ);
+            Controls.Add(lblRaiz);
+            Controls.Add(txtRaiz);
+            Controls.Add(txtCantIteraciones);
+            Controls.Add(lblCantIteraciones);
+            Controls.Add(txtConverge);
+            Controls.Add(lblConverge);
+            Controls.Add(txtIteracionesMax);
+            Controls.Add(lblIteracionesMax);
+            Controls.Add(txtTolerancia);
+            Controls.Add(lblTolerancia);
+            Controls.Add(txtXd);
+            Controls.Add(lblXd);
+            Controls.Add(txtXi);
+            Controls.Add(lblXi);
+            Controls.Add(txtFuncion);
+            Controls.Add(lblFx);
+            Controls.Add(IngreseLosDatos);
+            Controls.Add(lblMetodoSelecc);
+            Controls.Add(lblMetodoSeleccionado);
+            Controls.Add(metodosAbiertos);
+            Controls.Add(metodosCerrados);
+            Controls.Add(seleccioneMetodo);
+            Controls.Add(btnSecante);
+            Controls.Add(btnTangente);
+            Controls.Add(btnReglaFalsa);
+            Controls.Add(btnBiseccion);
+            Controls.Add(btnCalcular);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button button1;
-        private TextBox textBox1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
     }
 }

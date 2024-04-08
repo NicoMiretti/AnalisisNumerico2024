@@ -1,74 +1,232 @@
-using Calculus;
-
-namespace AnalisisNumerico2024.Unidad1
+namespace AnalisisNumerico2024
 {
-    public partial class Unidad1 : Form
+    public partial class Form1 : Form
     {
-        Calculo analizadorFuncion = new Calculo();
-
-        public void Prueba()
+        public Form1()
         {
 
-            string function = input
-            double xi = 1;
-            double xd = 5;
-            double tolerancia = 0.0001;
-            int iteraciones = 100;
+        }
 
-
-            if (analizadorFuncion.Sintaxis(function, 'x'))
+        double CalcularXr(string metodo, string funcion, double xi, double xd)
+        {
+            double xr = 0;
+            switch (metodo)
             {
-                if (analizadorFuncion.EvaluaFx(xi) * analizadorFuncion.EvaluaFx(xd) > 0)
+                case "Bisección":
+                    xr = (xi + xd) / 2.0;
+                    break;
+
+                case "Regla Falsa":
+                    xr = ((analizadorFuncion.EvaluaFx(xd) * xi - analizadorFuncion.EvaluaFx(xi) * xd) / (analizadorFuncion.EvaluaFx(xd) - analizadorFuncion.EvaluaFx(xi)));
+                    break;
+
+                case "Tangente":
+                    break;
+
+                case "Secante":
+                    break;
+            }
+            return xr;
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            if(metodoSeleccionado=="Bisección" || metodoSeleccionado == "Regla Falsa")
+            {
+                CalcularBiseccionOReglaFalsa();
+            }
+            else
+            {
+                CalcularTangenteOSecante();
+            }
+        }
+
+        private void btnBiseccion_Click(object sender, EventArgs e)
+        {
+            // Establecer el valor del método seleccionado
+            metodoSeleccionado = "Bisección";
+
+            // Actualizar el Label con el nombre del método seleccionado
+            lblMetodoSeleccionado.Text = metodoSeleccionado;
+
+            // Habilitar los TextBoxes relevantes y deshabilitar los demás
+            txtFuncion.Enabled = true;
+            txtXi.Enabled = true;
+            txtXd.Enabled = true;
+            lblXd.Enabled = true;
+            txtTolerancia.Enabled = true;
+            txtIteracionesMax.Enabled = true;
+
+        }
+
+        private void btnReglaFalsa_Click(object sender, EventArgs e)
+        {
+            // Establecer el valor del método seleccionado
+            metodoSeleccionado = "Regla Falsa";
+
+            // Actualizar el Label con el nombre del método seleccionado
+            lblMetodoSeleccionado.Text = metodoSeleccionado;
+
+            // Habilitar los TextBoxes relevantes y deshabilitar los demás
+            txtFuncion.Enabled = true;
+            txtXi.Enabled = true;
+            txtXd.Enabled = true;
+            lblXd.Enabled = true;
+            txtTolerancia.Enabled = true;
+            txtIteracionesMax.Enabled = true;
+        }
+
+        private void btnTangente_Click(object sender, EventArgs e)
+        {
+            // Establecer el valor del método seleccionado
+            metodoSeleccionado = "Tangente";
+
+            // Actualizar el Label con el nombre del método seleccionado
+            lblMetodoSeleccionado.Text = metodoSeleccionado;
+
+            // Habilitar los TextBoxes relevantes y deshabilitar los demás
+            txtFuncion.Enabled = true;
+            txtXi.Enabled = true;
+            txtXd.Enabled = false;
+            lblXd.Enabled = false;
+            txtTolerancia.Enabled = true;
+            txtIteracionesMax.Enabled = true;
+
+            // Limpiar los TextBoxes
+            LimpiarTextBoxes(txtXd);
+        }
+
+        private void btnSecante_Click(object sender, EventArgs e)
+        {
+            // Establecer el valor del método seleccionado
+            metodoSeleccionado = "Secante";
+
+            // Actualizar el Label con el nombre del método seleccionado
+            lblMetodoSeleccionado.Text = metodoSeleccionado;
+
+            // Habilitar los TextBoxes relevantes y deshabilitar los demás
+            txtFuncion.Enabled = true;
+            txtXi.Enabled = true;
+            txtXd.Enabled = false;
+            lblXd.Enabled = false;
+            txtTolerancia.Enabled = true;
+            txtIteracionesMax.Enabled = true;
+
+            // Limpiar los TextBoxes
+            LimpiarTextBoxes(txtXd);
+        }
+
+        // Método para limpiar los TextBoxes
+        private void LimpiarTextBoxes(params TextBox[] textBoxes)
+        {
+            foreach (TextBox textBox in textBoxes)
+            {
+                textBox.Clear();
+            }
+        }
+
+        // Método para calcular los resultados del método de Bisección o Regla Falsa
+        private void CalcularBiseccionOReglaFalsa()
+        {
+            double xi, xd, tolerancia, iteraciones;
+            //Verifico si algun campo esta vacio
+            if (string.IsNullOrWhiteSpace(txtFuncion.Text) ||
+                string.IsNullOrWhiteSpace(metodoSeleccionado) ||
+                !double.TryParse(txtXi.Text, out xi) ||   // Convertir txtXi a double
+                !double.TryParse(txtXd.Text, out xd) ||   // Convertir txtXd a double
+                !double.TryParse(txtTolerancia.Text, out tolerancia) ||   // Convertir txtTolerancia a double
+                !double.TryParse(txtIteracionesMax.Text, out iteraciones)) // Convertir txtIteraciones a double
+            {
+                MessageBox.Show("Por favor, complete todos los campos de manera correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (analizadorFuncion.Sintaxis(txtFuncion.Text, 'x')) //Evaluo sintaxis correcta
+            {
+                if (analizadorFuncion.EvaluaFx(xi) * analizadorFuncion.EvaluaFx(xd) > 0) // Evaluo la funcion en el punto
                 {
-                    MessageBox.Show("error varialble");
+                    MessageBox.Show(string.Format("El intervalo [{0},{1}] no contiene a la raíz. Vuelva a ingresar xi y xd.", xi, xd));
                 }
                 else
                 {
-                    var derivada = analizadorFuncion.Dx(xi);
-
-                    if (derivada < tolerancia || double.IsNaN(derivada))
+                    if (analizadorFuncion.EvaluaFx(xi) * analizadorFuncion.EvaluaFx(xd) == 0) // Evaluo si alguno es raiz
                     {
-                        MessageBox.Show("error tolerancia");
-                    }
-
-
-                    for (int i = 0; i <= iteraciones; i++)
-                    {
-                        if (Math.Abs(analizadorFuncion.EvaluaFx(xi)) < tolerancia)
+                        if (analizadorFuncion.EvaluaFx(xi) == 0)
                         {
-                            MessageBox.Show("Raiz es 0");
+                            txtRaiz.Text = xi.ToString();
+                            txtConverge.Text = "Si";
+                            txtCantIteraciones.Text = "0";
+                            txtErrorRelativ.Text = "0";
                         }
-
                         else
                         {
-                            MessageBox.Show("La sintasis es incorrecta");
+                            txtRaiz.Text = xd.ToString();
+                            txtConverge.Text = "Si";
+                            txtCantIteraciones.Text = "0";
+                            txtErrorRelativ.Text = "0";
                         }
-
                     }
+                    else
+                    {
+                        double xrAnterior = 0, xr = 0, error = 0;
+                        for (int i = 1; i <= iteraciones; i++)
+                        {
+                            xr = CalcularXr(metodoSeleccionado, txtFuncion.Text, xi, xd);
+                            error = Math.Abs((xr - xrAnterior) / xr);
+                            if (Math.Abs(analizadorFuncion.EvaluaFx(xr)) < tolerancia || error < tolerancia)
+                            {
+                                txtRaiz.Text = xr.ToString();
+                                txtConverge.Text = "Si";
+                                txtCantIteraciones.Text = i.ToString();
+                                txtErrorRelativ.Text = error.ToString();
+                                break;
+                            }
+                            else
+                            {
+                                if (analizadorFuncion.EvaluaFx(xi) * analizadorFuncion.EvaluaFx(xr) > 0)
+                                {
+                                    xi = xr;
+                                }
+                                else
+                                {
+                                    xd = xr;
+                                }
+                                xrAnterior = xr;
+                            }
+                            if (i == iteraciones)
+                            {
+                                txtRaiz.Text = xr.ToString();
+                                txtConverge.Text = "No";
+                                txtCantIteraciones.Text = "Superó las iteraciones";
+                                txtErrorRelativ.Text = error.ToString();
+                            }
+                        }
+                    }
+
                 }
-        }
+            }
+            else
+            {
+                MessageBox.Show("La sintaxis de la función no es correcta. Favor de volver a ingresar.");
+            }
+
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        // Método para calcular los resultados del método de Tangente o Secante
+        private void CalcularTangenteOSecante()
         {
-
+            double xi, xd, tolerancia, iteraciones;
+            //Verifico si algun campo esta vacio
+            if (string.IsNullOrWhiteSpace(txtFuncion.Text) ||
+                string.IsNullOrWhiteSpace(metodoSeleccionado) ||
+                !double.TryParse(txtXi.Text, out xi) ||   // Convertir txtXi a double
+                !double.TryParse(txtTolerancia.Text, out tolerancia) ||   // Convertir txtTolerancia a double
+                !double.TryParse(txtIteracionesMax.Text, out iteraciones)) // Convertir txtIteraciones a double
+            {
+                MessageBox.Show("Por favor, complete todos los campos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
-
-
 }
