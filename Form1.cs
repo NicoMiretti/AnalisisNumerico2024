@@ -36,14 +36,16 @@ namespace AnalisisNumerico2024
             switch (metodo)
             {
                 case "Tangente":
+
                     derivada = analizadorFuncion.Dx(xi);
                     double.TryParse(txtTolerancia.Text, out tolerancia);
                     if (Math.Abs(derivada) < tolerancia || double.IsNaN(derivada))
                     {
-                        txtRaiz.Text = "No encuentra la raíz";
-                        txtConverge.Text = "No, diverge";
-                        txtCantIteraciones.Text = "Superó las iteraciones";
-                        txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                        //txtRaiz.Text = "No encuentra la raíz";
+                        //txtConverge.Text = "No, diverge";
+                        //txtCantIteraciones.Text = "Superó las iteraciones";
+                        //txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                        xr = double.NaN;
                     }
                     else
                     {
