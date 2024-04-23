@@ -16,7 +16,7 @@ namespace AnalisisNumerico2024
 
            
           //  ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new Home());
         }
     }
 

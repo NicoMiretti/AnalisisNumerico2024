@@ -2,13 +2,13 @@ using Calculus;
 using System.Xml;
 namespace AnalisisNumerico2024
 {
-    public partial class Form1 : Form
+    public partial class RaicesFunciones : Form
     {
         Calculo analizadorFuncion = new Calculo();
 
         // Variable para almacenar el método seleccionado
         private string metodoSeleccionado;
-        public Form1()
+        public RaicesFunciones()
         {
             InitializeComponent();
         }
