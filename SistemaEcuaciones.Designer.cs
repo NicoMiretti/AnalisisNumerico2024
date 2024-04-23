@@ -94,7 +94,7 @@
             // 
             groupBoxMatriz.Location = new Point(50, 78);
             groupBoxMatriz.Name = "groupBoxMatriz";
-            groupBoxMatriz.Size = new Size(1033, 310);
+            groupBoxMatriz.Size = new Size(930, 290);
             groupBoxMatriz.TabIndex = 6;
             groupBoxMatriz.TabStop = false;
             groupBoxMatriz.Text = "Matriz";
@@ -103,7 +103,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 450);
+            ClientSize = new Size(1182, 553);
             Controls.Add(groupBoxMatriz);
             Controls.Add(btnCalcular);
             Controls.Add(cmbBox);
