@@ -31,7 +31,7 @@ namespace AnalisisNumerico2024
 
         double CalcularXrAbierto(string metodo, string funcion, double xi, double xd, double error)
         {
-            double derivada, tolerancia = 0;
+            double derivada, tolerancia;
             double xr = 0;
             switch (metodo)
             {
