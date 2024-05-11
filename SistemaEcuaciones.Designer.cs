@@ -40,24 +40,26 @@
             // lblIngresar
             // 
             lblIngresar.AutoSize = true;
-            lblIngresar.Location = new Point(27, 26);
+            lblIngresar.Location = new Point(24, 20);
             lblIngresar.Name = "lblIngresar";
-            lblIngresar.Size = new Size(299, 20);
+            lblIngresar.Size = new Size(236, 15);
             lblIngresar.TabIndex = 0;
             lblIngresar.Text = "Ingrese la dimensión de la matriz a calcular:";
             // 
             // txtDimension
             // 
-            txtDimension.Location = new Point(332, 23);
+            txtDimension.Location = new Point(290, 17);
+            txtDimension.Margin = new Padding(3, 2, 3, 2);
             txtDimension.Name = "txtDimension";
-            txtDimension.Size = new Size(53, 27);
+            txtDimension.Size = new Size(47, 23);
             txtDimension.TabIndex = 1;
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(404, 21);
+            btnGenerar.Location = new Point(354, 16);
+            btnGenerar.Margin = new Padding(3, 2, 3, 2);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(94, 29);
+            btnGenerar.Size = new Size(82, 22);
             btnGenerar.TabIndex = 2;
             btnGenerar.Text = "Generar";
             btnGenerar.UseVisualStyleBackColor = true;
@@ -66,9 +68,9 @@
             // lblMetodo
             // 
             lblMetodo.AutoSize = true;
-            lblMetodo.Location = new Point(528, 24);
+            lblMetodo.Location = new Point(462, 18);
             lblMetodo.Name = "lblMetodo";
-            lblMetodo.Size = new Size(65, 20);
+            lblMetodo.Size = new Size(52, 15);
             lblMetodo.TabIndex = 3;
             lblMetodo.Text = "Método:";
             // 
@@ -76,34 +78,39 @@
             // 
             cmbBox.FormattingEnabled = true;
             cmbBox.Items.AddRange(new object[] { "Gauss-Jordan", "Gauss-Seidel" });
-            cmbBox.Location = new Point(610, 21);
+            cmbBox.Location = new Point(534, 16);
+            cmbBox.Margin = new Padding(3, 2, 3, 2);
             cmbBox.Name = "cmbBox";
-            cmbBox.Size = new Size(151, 28);
+            cmbBox.Size = new Size(133, 23);
             cmbBox.TabIndex = 4;
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(787, 22);
+            btnCalcular.Location = new Point(689, 16);
+            btnCalcular.Margin = new Padding(3, 2, 3, 2);
             btnCalcular.Name = "btnCalcular";
-            btnCalcular.Size = new Size(94, 29);
+            btnCalcular.Size = new Size(82, 22);
             btnCalcular.TabIndex = 5;
             btnCalcular.Text = "Calcular";
             btnCalcular.UseVisualStyleBackColor = true;
+            btnCalcular.Click += btnCalcular_Click;
             // 
             // groupBoxMatriz
             // 
-            groupBoxMatriz.Location = new Point(50, 78);
+            groupBoxMatriz.Location = new Point(44, 58);
+            groupBoxMatriz.Margin = new Padding(3, 2, 3, 2);
             groupBoxMatriz.Name = "groupBoxMatriz";
-            groupBoxMatriz.Size = new Size(930, 290);
+            groupBoxMatriz.Padding = new Padding(3, 2, 3, 2);
+            groupBoxMatriz.Size = new Size(814, 218);
             groupBoxMatriz.TabIndex = 6;
             groupBoxMatriz.TabStop = false;
             groupBoxMatriz.Text = "Matriz";
             // 
             // SistemaEcuaciones
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 553);
+            ClientSize = new Size(1034, 415);
             Controls.Add(groupBoxMatriz);
             Controls.Add(btnCalcular);
             Controls.Add(cmbBox);
@@ -111,6 +118,7 @@
             Controls.Add(btnGenerar);
             Controls.Add(txtDimension);
             Controls.Add(lblIngresar);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "SistemaEcuaciones";
             Text = "SistemaEcuaciones";
             ResumeLayout(false);
