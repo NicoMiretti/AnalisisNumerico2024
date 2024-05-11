@@ -102,6 +102,7 @@ namespace AnalisisNumerico2024
                 for (int col = 0; col < dimension + 1; col++)
                 {
                     Control textBox = groupBoxMatriz.Controls.Find($"({fila},{col})", true).First();
+
                     if (!double.TryParse((textBox as TextBox).Text, out double numero))
                     {
                         return null;
@@ -113,39 +114,32 @@ namespace AnalisisNumerico2024
         }
         public static double[] MetodoGaussJordan(int dimension, double[,] matriz)
         {
-            // Bucle general que recorre cada fila en donde está el coeficiente de la diagonal principal
             for (int filaDiag = 0; filaDiag < dimension; filaDiag++)
-            {
-                // Paso 2.a: Obtener el coeficiente de la diagonal principal
+            {               
                 double coeficienteDiagonal = matriz[filaDiag, filaDiag];
 
-                // Paso 2.b: Bucle para recorrer las columnas de la fila actual y dividir por el coeficiente de la diagonal principal
+                
                 for (int col = 0; col < dimension + 1; col++)
                 {
                     matriz[filaDiag, col] /= coeficienteDiagonal;
                 }
-
-                // Paso 2.c: Bucle para recorrer nuevamente las filas, salteando la fila del bucle principal
+               
                 for (int fila = 0; fila < dimension; fila++)
                 {
                     if (fila != filaDiag)
-                    {
-                        // Paso 2.d: Obtener el coeficiente que queremos hacer cero
+                    {                       
                         double coeficienteCero = matriz[fila, filaDiag];
-
-                        // Paso 2.e: Bucle para anular el valor de la posición
+                       
                         for (int col = 0; col < dimension + 1; col++)
                         {
-                            matriz[fila, col] -= coeficienteCero * matriz[filaDiag, col];
+                            matriz[fila, col] = matriz[fila, col] - (coeficienteCero * matriz[filaDiag, col]);
                         }
                     }
                 }
             }
-
-            // Instanciamos un vector resultado
+           
             double[] vectorResultado = new double[dimension];
-
-            // Bucle para obtener los valores de los términos independientes
+            
             for (int fila = 0; fila < dimension; fila++)
             {
                 vectorResultado[fila] = matriz[fila, dimension];
