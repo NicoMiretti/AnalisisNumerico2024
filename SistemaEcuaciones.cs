@@ -17,6 +17,8 @@ namespace AnalisisNumerico2024
             InitializeComponent();
         }
 
+        #region GENERACION MATRIZ
+        //Método para generar matrix 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDimension.Text, out int dimension))
@@ -60,5 +62,75 @@ namespace AnalisisNumerico2024
                 }
             }
         }
+        #endregion
+
+        //Metodo gaus-seidel
+
+        private void metodo(object sender, EventArgs e)
+        {
+            //VARIABLES COMUNES 
+            double tolerancia = 0.0001;
+            bool esSolucion = false;
+            short contador = 0;
+            short dimension = short.Parse(txtDimension.Text);
+            //revisar
+            // vectorResultado [dimension];
+            // vectorResultado.INI
+
+            string metodoSeleccionado = cmbBox.SelectedItem.ToString();
+
+            if (metodoSeleccionado == "Gauss-Jordan")
+            {
+
+            }
+            else if (metodoSeleccionado == "Gauss-Seidel")
+            {
+                while (contador <= 100 && !esSolucion)
+                {
+                    contador++;
+                    if (contador > 1)
+                    {
+                        vectorResultado.CopyTo(vectoranterior, 0);
+                    }
+                    for (int row = 0; row < dimension; row++)
+                    {
+                        //resultado = groupBoxMatriz[row, dimension];
+                        // coeficienteIncognita = groupBoxMatriz
+                        for (int col = 0; col < dimension; col++)
+                        {
+                            if (row != col)
+                            {
+                                //resultado = resultado - (matriz[row, col] * vectorResultado[col]);
+                            }
+                        }
+                        //coeficienteIncognita = resultado / coeficienteIncognita;
+                        //vectorResultado[row] = coeficienteIncognita;
+                    }
+                    short contadorMismoResultado = 0;
+                    double errorRelativo = 0;
+                    for (int i = 0; i < dimension; i++)
+                    {
+                        errorRelativo = Math.Abs((vectorResultado[i] - vectorAnterior[i]) / vectorResultado[i]);
+                        if (errorRelativo < tolerancia)
+                        { 
+                            contadorMismoResultado++;
+                        }
+                    }
+                    esSolucion = contadorMismoResultado == 0;
+                }
+                if (contador <= 100)
+                {
+                    return vectorResultado;
+                }
+                else
+                {
+                    MessageBox.Show("Se supero la cantidad de iteraciones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+        }
+
+
+
     }
 }
