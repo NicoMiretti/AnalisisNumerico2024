@@ -66,32 +66,39 @@ namespace AnalisisNumerico2024
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            int dimension = int.Parse(txtDimension.Text);
-            double[,] matriz = GuardarMatriz(dimension);
-            MessageBox.Show("Matriz cargada con exito");
-            double[] vectorResultado = new double[dimension];
-            switch (cmbBox.SelectedIndex)
+            try
             {
-                case 0:
-                    vectorResultado = MetodoGaussJordan(dimension, matriz);
-                    break;
-                    //case 1:
-                    //    vectorResultado = Logica2.MetodoGaussSeidel(matriz, dimension);
-                    //    break;
-            }
-            string Resultados = "";
-            if (vectorResultado != null)
-            {
-                for (int i = 0; i < vectorResultado.Length; i++)
+                int dimension = int.Parse(txtDimension.Text);
+                double[,] matriz = GuardarMatriz(dimension);
+                MessageBox.Show("Matriz cargada con exito");
+                double[] vectorResultado = new double[dimension];
+                switch (cmbBox.SelectedIndex)
                 {
-                    Resultados += $"X{i + 1} = {vectorResultado[i]}\n";
+                    case 0:
+                        vectorResultado = MetodoGaussJordan(dimension, matriz);
+                        break;
+                    case 1:
+                        vectorResultado = MetodoGaussSeidel(dimension, matriz);
+                        break;
                 }
+                string Resultados = "";
+                if (vectorResultado != null)
+                {
+                    for (int i = 0; i < vectorResultado.Length; i++)
+                    {
+                        Resultados += $"X{i + 1} = {vectorResultado[i]}\n";
+                    }
+                }
+                else
+                {
+                    Resultados = "Se pasó de iteraciones.";
+                }
+                MessageBox.Show(Resultados);
             }
-            else
+            catch (Exception ex)
             {
-                Resultados = "Se pasó de iteraciones.";
+                MessageBox.Show(ex.Message);
             }
-            MessageBox.Show(Resultados);
         }
 
         public double[,] GuardarMatriz(int dimension)
@@ -115,21 +122,21 @@ namespace AnalisisNumerico2024
         public static double[] MetodoGaussJordan(int dimension, double[,] matriz)
         {
             for (int filaDiag = 0; filaDiag < dimension; filaDiag++)
-            {               
+            {
                 double coeficienteDiagonal = matriz[filaDiag, filaDiag];
 
-                
+
                 for (int col = 0; col < dimension + 1; col++)
                 {
                     matriz[filaDiag, col] /= coeficienteDiagonal;
                 }
-               
+
                 for (int fila = 0; fila < dimension; fila++)
                 {
                     if (fila != filaDiag)
-                    {                       
+                    {
                         double coeficienteCero = matriz[fila, filaDiag];
-                       
+
                         for (int col = 0; col < dimension + 1; col++)
                         {
                             matriz[fila, col] = matriz[fila, col] - (coeficienteCero * matriz[filaDiag, col]);
@@ -137,15 +144,69 @@ namespace AnalisisNumerico2024
                     }
                 }
             }
-           
+
             double[] vectorResultado = new double[dimension];
-            
+
             for (int fila = 0; fila < dimension; fila++)
             {
                 vectorResultado[fila] = matriz[fila, dimension];
             }
 
             return vectorResultado;
+        }
+
+        private static double[] MetodoGaussSeidel(int dimension, double[,] matriz)
+        {
+            //VARIABLES COMUNES 
+            double tolerancia = 0.0001;
+            bool esSolucion = false;
+            short contador = 0;
+            double[] vectorResultado = new double[dimension];
+            vectorResultado.Initialize();
+            double[] vectorAnterior = new double[dimension];
+
+            while (contador <= 100 && !esSolucion)
+            {
+                contador++;
+                if (contador > 1)
+                {
+                    vectorResultado.CopyTo(vectorAnterior, 0);
+                }
+                for (int fila = 0; fila < dimension; fila++)
+                {
+                    double resultado = matriz[fila, dimension];
+                    double coeficienteIncognita = matriz[fila, fila];
+                    for (int col = 0; col < dimension; col++)
+                    {
+                        if (fila != col)
+                        {
+                            resultado = resultado - (matriz[fila, col] * vectorResultado[col]);
+                        }
+                    }
+                    coeficienteIncognita = resultado / coeficienteIncognita;
+                    vectorResultado[fila] = coeficienteIncognita;
+                }
+                short contadorMismoResultado = 0;
+                double errorRelativo = 0;
+                for (int i = 0; i < dimension; i++)
+                {
+                    errorRelativo = Math.Abs((vectorResultado[i] - vectorAnterior[i]) / vectorResultado[i]);
+                    if (errorRelativo < tolerancia)
+                    {
+                        contadorMismoResultado++;
+                    }
+                }
+                esSolucion = contadorMismoResultado == dimension;
+            }
+            if (contador <= 100)
+            {
+                return vectorResultado;
+            }
+            else
+            {
+                throw new Exception("Se superó la cantidad de iteraciones.");
+            }
+
         }
     }
 }
