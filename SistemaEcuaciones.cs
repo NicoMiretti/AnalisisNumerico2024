@@ -64,73 +64,52 @@ namespace AnalisisNumerico2024
         }
         #endregion
 
-        //Metodo gaus-seidel
-
-        private void metodo(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            //VARIABLES COMUNES 
-            double tolerancia = 0.0001;
-            bool esSolucion = false;
-            short contador = 0;
-            short dimension = short.Parse(txtDimension.Text);
-            //revisar
-            // vectorResultado [dimension];
-            // vectorResultado.INI
-
-            string metodoSeleccionado = cmbBox.SelectedItem.ToString();
-
-            if (metodoSeleccionado == "Gauss-Jordan")
+            int dimension = int.Parse(txtDimension.Text);
+            double[,] matriz = GuardarMatriz(dimension);
+            MessageBox.Show("Matriz cargada con exito");
+            double[] vectorResultado = new double[dimension];
+            switch (cmbBox.SelectedIndex)
             {
-
+                case 0:
+                    vectorResultado = Logica2.MetodoGaussJordan(dimension, matriz);
+                    break;
+                case 1:
+                    vectorResultado = Logica2.MetodoGaussSeidel(matriz, dimension);
+                    break;
             }
-            else if (metodoSeleccionado == "Gauss-Seidel")
+            string Resultados = "";
+            if (vectorResultado != null)
             {
-                while (contador <= 100 && !esSolucion)
+                for (int i = 0; i < vectorResultado.Length; i++)
                 {
-                    contador++;
-                    if (contador > 1)
-                    {
-                        vectorResultado.CopyTo(vectoranterior, 0);
-                    }
-                    for (int row = 0; row < dimension; row++)
-                    {
-                        //resultado = groupBoxMatriz[row, dimension];
-                        // coeficienteIncognita = groupBoxMatriz
-                        for (int col = 0; col < dimension; col++)
-                        {
-                            if (row != col)
-                            {
-                                //resultado = resultado - (matriz[row, col] * vectorResultado[col]);
-                            }
-                        }
-                        //coeficienteIncognita = resultado / coeficienteIncognita;
-                        //vectorResultado[row] = coeficienteIncognita;
-                    }
-                    short contadorMismoResultado = 0;
-                    double errorRelativo = 0;
-                    for (int i = 0; i < dimension; i++)
-                    {
-                        errorRelativo = Math.Abs((vectorResultado[i] - vectorAnterior[i]) / vectorResultado[i]);
-                        if (errorRelativo < tolerancia)
-                        { 
-                            contadorMismoResultado++;
-                        }
-                    }
-                    esSolucion = contadorMismoResultado == 0;
+                    Resultados += $"X{i + 1} = {vectorResultado[i]}\n";
                 }
-                if (contador <= 100)
-                {
-                    return vectorResultado;
-                }
-                else
-                {
-                    MessageBox.Show("Se supero la cantidad de iteraciones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
+            else
+            {
+                Resultados = "Se pasó de iteraciones.";
+            }
+            MessageBox.Show(Resultados);
         }
 
-
-
+        public double[,] GuardarMatriz(int dimension)
+        {
+            double[,] Matriz = new double[dimension, dimension + 1];
+            for (int fila = 0; fila < dimension; fila++)
+            {
+                for (int col = 0; col < dimension + 1; col++)
+                {
+                    Control textBox = groupBoxMatriz.Controls.Find($"({fila},{col})", true).First();
+                    if (!double.TryParse((textBox as TextBox).Text, out double numero))
+                    {
+                        return null;
+                    }
+                    Matriz[fila, col] = numero;
+                }
+            }
+            return Matriz;
+        }
     }
 }
