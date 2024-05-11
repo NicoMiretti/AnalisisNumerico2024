@@ -17,8 +17,6 @@ namespace AnalisisNumerico2024
             InitializeComponent();
         }
 
-        #region GENERACION MATRIZ
-        //Método para generar matrix 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDimension.Text, out int dimension))
@@ -61,55 +59,6 @@ namespace AnalisisNumerico2024
                     puntoY += 30;
                 }
             }
-        }
-        #endregion
-
-        private void btnCalcular_Click(object sender, EventArgs e)
-        {
-            int dimension = int.Parse(txtDimension.Text);
-            double[,] matriz = GuardarMatriz(dimension);
-            MessageBox.Show("Matriz cargada con exito");
-            double[] vectorResultado = new double[dimension];
-            switch (cmbBox.SelectedIndex)
-            {
-                case 0:
-                    vectorResultado = Logica2.MetodoGaussJordan(dimension, matriz);
-                    break;
-                case 1:
-                    vectorResultado = Logica2.MetodoGaussSeidel(matriz, dimension);
-                break;
-            }
-            string Resultados = "";
-            if (vectorResultado != null)
-            {
-                for (int i = 0; i < vectorResultado.Length; i++)
-                {
-                    Resultados += $"X{i + 1} = {vectorResultado[i]}\n";
-                }
-            }
-            else
-            {
-                Resultados = "Se pasó de iteraciones.";
-            }
-            MessageBox.Show(Resultados);
-        }
-
-        public double[,] GuardarMatriz(int dimension)
-        {
-            double[,] Matriz = new double[dimension, dimension + 1];
-            for (int fila = 0; fila < dimension; fila++)
-            {
-                for (int col = 0; col < dimension + 1; col++)
-                {
-                    Control textBox = groupBoxMatriz.Controls.Find($"({fila},{col})", true).First();
-                    if (!double.TryParse((textBox as TextBox).Text, out double numero))
-                    {
-                        return null;
-                    }
-                    Matriz[fila, col] = numero;
-                }
-            }
-            return Matriz;
         }
     }
 }
