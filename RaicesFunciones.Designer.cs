@@ -301,6 +301,7 @@
             txtErrorRelativ.ReadOnly = true;
             txtErrorRelativ.Size = new Size(93, 23);
             txtErrorRelativ.TabIndex = 28;
+            txtErrorRelativ.TextChanged += txtErrorRelativ_TextChanged;
             // 
             // lblErrorRelativ
             // 
@@ -311,7 +312,7 @@
             lblErrorRelativ.TabIndex = 27;
             lblErrorRelativ.Text = "Error Relativ.:";
             // 
-            // Form1
+            // RaicesFunciones
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -345,7 +346,7 @@
             Controls.Add(btnReglaFalsa);
             Controls.Add(btnBiseccion);
             Controls.Add(btnCalcular);
-            Name = "Form1";
+            Name = "RaicesFunciones";
             Text = "Form1";
             ResumeLayout(false);
             PerformLayout();

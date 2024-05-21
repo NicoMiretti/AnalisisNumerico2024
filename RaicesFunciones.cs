@@ -208,7 +208,7 @@ namespace AnalisisNumerico2024
                                 txtRaiz.Text = Math.Round(xr, 6).ToString();
                                 txtConverge.Text = "Si";
                                 txtCantIteraciones.Text = i.ToString();
-                                txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                                txtErrorRelativ.Text = Math.Round(error, 4).ToString();
                                 break;
                             }
                             else
@@ -228,7 +228,7 @@ namespace AnalisisNumerico2024
                                 txtRaiz.Text = Math.Round(xr, 6).ToString();
                                 txtConverge.Text = "No";
                                 txtCantIteraciones.Text = "Superó las iteraciones";
-                                txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                                txtErrorRelativ.Text = Math.Round(error, 4).ToString();
                             }
                         }
                     }
@@ -291,7 +291,7 @@ namespace AnalisisNumerico2024
                         txtRaiz.Text = "No se encuentra";
                         txtConverge.Text = "No, diverge";
                         txtCantIteraciones.Text = i.ToString();
-                        txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                        txtErrorRelativ.Text = Math.Round(error, 4).ToString();
                         break;
                     }
                     error = Math.Abs((xr - xrAnterior) / xr);
@@ -300,7 +300,8 @@ namespace AnalisisNumerico2024
                         txtRaiz.Text = Math.Round(xr, 6).ToString();
                         txtConverge.Text = "Si"; //Preguntar
                         txtCantIteraciones.Text = i.ToString();
-                        txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                        //modificar
+                        txtErrorRelativ.Text = Math.Round(error, 4).ToString();
                         break;
                     }
                     else
@@ -321,7 +322,7 @@ namespace AnalisisNumerico2024
                         txtRaiz.Text = Math.Round(xr, 6).ToString();
                         txtConverge.Text = "Si";
                         txtCantIteraciones.Text = "Superó las iteraciones";
-                        txtErrorRelativ.Text = Math.Round(error, 6).ToString();
+                        txtErrorRelativ.Text = Math.Round(error, 4).ToString();
                     }
                 }
             }
@@ -332,5 +333,9 @@ namespace AnalisisNumerico2024
             }
         }
 
+        private void txtErrorRelativ_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
