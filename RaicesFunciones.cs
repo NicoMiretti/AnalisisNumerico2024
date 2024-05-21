@@ -13,7 +13,7 @@ namespace AnalisisNumerico2024
             InitializeComponent();
         }
 
-        double CalcularXrCerrado(string metodo, double xi, double xd)//Preguntar
+        double CalcularXrCerrado(string metodo, double xi, double xd)
         {
             double xr = 0;
             switch (metodo)
@@ -41,10 +41,6 @@ namespace AnalisisNumerico2024
                     double.TryParse(txtTolerancia.Text, out tolerancia);
                     if (Math.Abs(derivada) < tolerancia || double.IsNaN(derivada))
                     {
-                        //txtRaiz.Text = "No encuentra la raíz";
-                        //txtConverge.Text = "No, diverge";
-                        //txtCantIteraciones.Text = "Superó las iteraciones";
-                        //txtErrorRelativ.Text = Math.Round(error, 6).ToString();
                         xr = double.NaN;
                     }
                     else
