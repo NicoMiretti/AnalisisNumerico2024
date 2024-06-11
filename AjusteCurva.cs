@@ -123,16 +123,5 @@ namespace AnalisisNumerico2024
             panelPuntosIngresados.Controls.Clear();
             PuntosCargados.Clear();
         }
-        private void DeleteLastButton_Click(object sender, EventArgs e)
-        {
-            panelPuntosIngresados.Controls.RemoveAt(PuntosCargados.Count - 1);
-            PuntosCargados.RemoveAt(PuntosCargados.Count - 1);
-        }
-
-        private void DeleteAllButton_Click(object sender, EventArgs e)
-        {
-            panelPuntosIngresados.Controls.Clear();
-            PuntosCargados.Clear();
-        }
     }
 }
