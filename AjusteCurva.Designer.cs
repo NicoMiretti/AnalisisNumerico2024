@@ -37,7 +37,7 @@
             DeleteLastButton = new Button();
             CalcularButton = new Button();
             CargarButton = new Button();
-            panel1 = new Panel();
+            panelPuntosIngresados = new Panel();
             txtTolerancia = new TextBox();
             txtY = new TextBox();
             txtX = new TextBox();
@@ -46,7 +46,7 @@
             lblTolerancia = new Label();
             lblIngresarPunto = new Label();
             label1 = new Label();
-            panel2 = new Panel();
+            panelGrafica = new Panel();
             EfectividadAjuste = new Label();
             Correccion = new Label();
             FuncionObtenida = new Label();
@@ -91,7 +91,7 @@
             splitContainer1.Panel1.Controls.Add(DeleteLastButton);
             splitContainer1.Panel1.Controls.Add(CalcularButton);
             splitContainer1.Panel1.Controls.Add(CargarButton);
-            splitContainer1.Panel1.Controls.Add(panel1);
+            splitContainer1.Panel1.Controls.Add(panelPuntosIngresados);
             splitContainer1.Panel1.Controls.Add(txtTolerancia);
             splitContainer1.Panel1.Controls.Add(txtY);
             splitContainer1.Panel1.Controls.Add(txtX);
@@ -103,7 +103,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(panel2);
+            splitContainer1.Panel2.Controls.Add(panelGrafica);
             splitContainer1.Panel2.Controls.Add(EfectividadAjuste);
             splitContainer1.Panel2.Controls.Add(Correccion);
             splitContainer1.Panel2.Controls.Add(FuncionObtenida);
@@ -111,7 +111,6 @@
             splitContainer1.Panel2.Controls.Add(label8);
             splitContainer1.Panel2.Controls.Add(label7);
             splitContainer1.Panel2.Controls.Add(label6);
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint_1;
             splitContainer1.Size = new Size(939, 536);
             splitContainer1.SplitterDistance = 459;
             splitContainer1.TabIndex = 1;
@@ -151,13 +150,14 @@
             CargarButton.TabIndex = 25;
             CargarButton.Text = "Cargar Punto";
             CargarButton.UseVisualStyleBackColor = true;
+            CargarButton.Click += CargarButton_Click_1;
             // 
-            // panel1
+            // panelPuntosIngresados
             // 
-            panel1.Location = new Point(155, 173);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(124, 185);
-            panel1.TabIndex = 24;
+            panelPuntosIngresados.Location = new Point(155, 173);
+            panelPuntosIngresados.Name = "panelPuntosIngresados";
+            panelPuntosIngresados.Size = new Size(124, 185);
+            panelPuntosIngresados.TabIndex = 24;
             // 
             // txtTolerancia
             // 
@@ -225,13 +225,12 @@
             label1.TabIndex = 15;
             label1.Text = "Datos de Entrada";
             // 
-            // panel2
+            // panelGrafica
             // 
-            panel2.Location = new Point(16, 173);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(448, 351);
-            panel2.TabIndex = 7;
-            panel2.Paint += panel2_Paint;
+            panelGrafica.Location = new Point(16, 173);
+            panelGrafica.Name = "panelGrafica";
+            panelGrafica.Size = new Size(448, 351);
+            panelGrafica.TabIndex = 7;
             // 
             // EfectividadAjuste
             // 
@@ -295,7 +294,6 @@
             label6.Size = new Size(87, 15);
             label6.TabIndex = 0;
             label6.Text = "Datos de Salida";
-            label6.Click += label6_Click;
             // 
             // AjusteCurva
             // 
@@ -324,7 +322,7 @@
         private Button DeleteLastButton;
         private Button CalcularButton;
         private Button CargarButton;
-        private Panel panel1;
+        private Panel panelPuntosIngresados;
         private TextBox txtTolerancia;
         private TextBox txtY;
         private TextBox txtX;
@@ -336,7 +334,7 @@
         private Label label6;
         private Label label8;
         private Label label7;
-        private Panel panel2;
+        private Panel panelGrafica;
         private Label EfectividadAjuste;
         private Label Correccion;
         private Label FuncionObtenida;
