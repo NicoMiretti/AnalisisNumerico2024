@@ -100,28 +100,17 @@ namespace AnalisisNumerico2024
                 Sr += Math.Pow(a1 * punto[0] + a0 - punto[1], 2);
             }
             double r = Math.Sqrt(((St - Sr) / St) * 100);
-            FuncionObtenida.Text = $"y = {Math.Round(a1, 2)} x + {Math.Round(a1, 2)}";
-            Correccion.Text = $"{r}";
-            if (r > tolerancia)
+            FuncionObtenida.Text = $"y = {Math.Round(a1, 3)} x + {Math.Round(a0, 3)}";
+            Correccion.Text = $"{Math.Round((r * 10), 2)}%";
+            if (Math.Round((r * 10), 2) > tolerancia)
             {
-                EfectividadAjuste.Text = "El ajuste es aceptable";
+                EfectividadAjuste.Text = "El ajuste es aceptable.";
             }
             else
             {
-                EfectividadAjuste.Text = "El ajuste no es aceptable";
+                EfectividadAjuste.Text = "El ajuste no es aceptable.";
             }
             graficador.Graficar(PuntosCargados, FuncionObtenida.Text);
-        }
-        private void DeleteLastButton_Click(object sender, EventArgs e)
-        {
-            panelPuntosIngresados.Controls.RemoveAt(PuntosCargados.Count - 1);
-            PuntosCargados.RemoveAt(PuntosCargados.Count - 1);
-        }
-
-        private void DeleteAllButton_Click(object sender, EventArgs e)
-        {
-            panelPuntosIngresados.Controls.Clear();
-            PuntosCargados.Clear();
         }
         private void DeleteLastButton_Click(object sender, EventArgs e)
         {
