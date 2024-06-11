@@ -26,5 +26,10 @@ namespace AnalisisNumerico2024
         {
 
         }
+
+        private void IngresarFuncion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

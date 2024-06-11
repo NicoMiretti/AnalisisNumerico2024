@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            button1 = new Button();
-            label7 = new Label();
-            textBox1 = new TextBox();
-            label8 = new Label();
-            TextBoxXi = new TextBox();
-            TextBoxXd = new TextBox();
-            IngresarFuncion = new TextBox();
             Intervalo = new TextBox();
+            IngresarFuncion = new TextBox();
+            TextBoxXd = new TextBox();
+            TextBoxXi = new TextBox();
+            label8 = new Label();
+            button1 = new Button();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            label7 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -78,44 +78,62 @@
             splitContainer1.SplitterDistance = 323;
             splitContainer1.TabIndex = 0;
             // 
-            // label1
+            // Intervalo
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Trebuchet MS", 11.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(134, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Datos de Entrada";
+            Intervalo.Location = new Point(189, 136);
+            Intervalo.Name = "Intervalo";
+            Intervalo.Size = new Size(78, 23);
+            Intervalo.TabIndex = 10;
             // 
-            // label2
+            // IngresarFuncion
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Trebuchet MS", 11.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
-            label2.Location = new Point(15, 7);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Resultado";
+            IngresarFuncion.Location = new Point(74, 42);
+            IngresarFuncion.Name = "IngresarFuncion";
+            IngresarFuncion.Size = new Size(193, 23);
+            IngresarFuncion.TabIndex = 9;
+            IngresarFuncion.TextChanged += IngresarFuncion_TextChanged;
             // 
-            // label3
+            // TextBoxXd
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(27, 47);
-            label3.Name = "label3";
-            label3.Size = new Size(30, 15);
-            label3.TabIndex = 1;
-            label3.Text = "F(x):";
+            TextBoxXd.Location = new Point(219, 78);
+            TextBoxXd.Name = "TextBoxXd";
+            TextBoxXd.Size = new Size(48, 23);
+            TextBoxXd.TabIndex = 8;
             // 
-            // label4
+            // TextBoxXi
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(90, 81);
-            label4.Name = "label4";
-            label4.Size = new Size(20, 15);
-            label4.TabIndex = 2;
-            label4.Text = "Xi:";
+            TextBoxXi.Location = new Point(116, 78);
+            TextBoxXi.Name = "TextBoxXi";
+            TextBoxXi.Size = new Size(58, 23);
+            TextBoxXi.TabIndex = 7;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(12, 179);
+            label8.Name = "label8";
+            label8.Size = new Size(52, 15);
+            label8.TabIndex = 6;
+            label8.Text = "Método:";
+            // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(106, 243);
+            button1.Name = "button1";
+            button1.Size = new Size(107, 23);
+            button1.TabIndex = 5;
+            button1.Text = "Calcular";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(12, 139);
+            label6.Name = "label6";
+            label6.Size = new Size(165, 15);
+            label6.TabIndex = 4;
+            label6.Text = "Cantidad de subIntervalos (n):";
             // 
             // label5
             // 
@@ -128,24 +146,41 @@
             label5.Text = "Xd:";
             label5.Click += label5_Click;
             // 
-            // label6
+            // label4
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(12, 139);
-            label6.Name = "label6";
-            label6.Size = new Size(165, 15);
-            label6.TabIndex = 4;
-            label6.Text = "Cantidad de subIntervalos (n):";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Location = new Point(90, 81);
+            label4.Name = "label4";
+            label4.Size = new Size(20, 15);
+            label4.TabIndex = 2;
+            label4.Text = "Xi:";
             // 
-            // button1
+            // label3
             // 
-            button1.Font = new Font("Segoe UI Black", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(106, 243);
-            button1.Name = "button1";
-            button1.Size = new Size(107, 23);
-            button1.TabIndex = 5;
-            button1.Text = "Calcular";
-            button1.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Location = new Point(27, 47);
+            label3.Name = "label3";
+            label3.Size = new Size(30, 15);
+            label3.TabIndex = 1;
+            label3.Text = "F(x):";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Trebuchet MS", 11.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(134, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Datos de Entrada";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(99, 49);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(151, 23);
+            textBox1.TabIndex = 2;
             // 
             // label7
             // 
@@ -157,49 +192,15 @@
             label7.Text = "Área:";
             label7.Click += label7_Click;
             // 
-            // textBox1
+            // label2
             // 
-            textBox1.Location = new Point(99, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(151, 23);
-            textBox1.TabIndex = 2;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(12, 179);
-            label8.Name = "label8";
-            label8.Size = new Size(52, 15);
-            label8.TabIndex = 6;
-            label8.Text = "Método:";
-            // 
-            // TextBoxXi
-            // 
-            TextBoxXi.Location = new Point(116, 78);
-            TextBoxXi.Name = "TextBoxXi";
-            TextBoxXi.Size = new Size(58, 23);
-            TextBoxXi.TabIndex = 7;
-            // 
-            // TextBoxXd
-            // 
-            TextBoxXd.Location = new Point(219, 78);
-            TextBoxXd.Name = "TextBoxXd";
-            TextBoxXd.Size = new Size(48, 23);
-            TextBoxXd.TabIndex = 8;
-            // 
-            // IngresarFuncion
-            // 
-            IngresarFuncion.Location = new Point(74, 42);
-            IngresarFuncion.Name = "IngresarFuncion";
-            IngresarFuncion.Size = new Size(193, 23);
-            IngresarFuncion.TabIndex = 9;
-            // 
-            // Intervalo
-            // 
-            Intervalo.Location = new Point(189, 136);
-            Intervalo.Name = "Intervalo";
-            Intervalo.Size = new Size(78, 23);
-            Intervalo.TabIndex = 10;
+            label2.AutoSize = true;
+            label2.Font = new Font("Trebuchet MS", 11.25F, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline, GraphicsUnit.Point);
+            label2.Location = new Point(15, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(79, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Resultado";
             // 
             // Form1
             // 
