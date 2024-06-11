@@ -123,6 +123,7 @@
             DeleteAllButton.TabIndex = 28;
             DeleteAllButton.Text = "Borrar Todos";
             DeleteAllButton.UseVisualStyleBackColor = true;
+            DeleteAllButton.Click += DeleteAllButton_Click;
             // 
             // DeleteLastButton
             // 
@@ -132,6 +133,7 @@
             DeleteLastButton.TabIndex = 27;
             DeleteLastButton.Text = "Eliminar Ultimo";
             DeleteLastButton.UseVisualStyleBackColor = true;
+            DeleteLastButton.Click += DeleteLastButton_Click;
             // 
             // CalcularButton
             // 
@@ -141,6 +143,7 @@
             CalcularButton.TabIndex = 26;
             CalcularButton.Text = "Calcular";
             CalcularButton.UseVisualStyleBackColor = true;
+            CalcularButton.Click += CalcularButton_Click_1;
             // 
             // CargarButton
             // 

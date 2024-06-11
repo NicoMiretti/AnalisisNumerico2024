@@ -60,16 +60,16 @@ namespace AnalisisNumerico2024
                 txtY.Clear();
             }
         }
-        public void Graficar()
+        private void CalcularButton_Click_1(object sender, EventArgs e)
         {
-            List<double[]> PuntosCargados = new List<double[]>();
-            string function = "2.5*x-1"; // y = 2,5x – 1
-            SetPanelGrafica();
-            graficador.Graficar(PuntosCargados, function);
-        }
-        private void CalcularButton_Click(object sender, EventArgs e)
-        {
-            int cantPuntosEntrada = PuntosCargados.Count();
+            double tolerancia = 0;
+            if (string.IsNullOrWhiteSpace(txtTolerancia.Text) ||
+               !double.TryParse(txtTolerancia.Text, out tolerancia))
+            {
+                MessageBox.Show("Por favor, complete todos los campos de manera correcta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int n = PuntosCargados.Count();
             double sumX = 0;
             foreach (double[] punto in PuntosCargados)
             {
@@ -78,9 +78,50 @@ namespace AnalisisNumerico2024
             double sumY = 0;
             foreach (double[] punto in PuntosCargados)
             {
-                sumX += punto[1];
+                sumY += punto[1];
             }
+            double sumXY = 0;
+            foreach (double[] punto in PuntosCargados)
+            {
+                sumXY += punto[0] * punto[1];
+            }
+            double sumX2 = 0;
+            foreach (double[] punto in PuntosCargados)
+            {
+                sumX2 += punto[0] * punto[0];
+            }
+            double a1 = (n * sumXY - sumX * sumY) / (n * sumX2 - ((sumX) * (sumX)));
+            double a0 = (sumY / n) - a1 * (sumX / n);
+            double St = 0;
+            double Sr = 0;
+            foreach (double[] punto in PuntosCargados)
+            {
+                St += Math.Pow(sumY / n - punto[1], 2);
+                Sr += Math.Pow(a1 * punto[0] + a0 - punto[1], 2);
+            }
+            double r = Math.Sqrt(((St - Sr) / St) * 100);
+            FuncionObtenida.Text = $"y = {Math.Round(a1, 2)} x + {Math.Round(a1, 2)}";
+            Correccion.Text = $"{r}";
+            if (r > tolerancia)
+            {
+                EfectividadAjuste.Text = "El ajuste es aceptable";
+            }
+            else
+            {
+                EfectividadAjuste.Text = "El ajuste no es aceptable";
+            }
+            graficador.Graficar(PuntosCargados, FuncionObtenida.Text);
+        }
+        private void DeleteLastButton_Click(object sender, EventArgs e)
+        {
+            panelPuntosIngresados.Controls.RemoveAt(PuntosCargados.Count - 1);
+            PuntosCargados.RemoveAt(PuntosCargados.Count - 1);
+        }
 
+        private void DeleteAllButton_Click(object sender, EventArgs e)
+        {
+            panelPuntosIngresados.Controls.Clear();
+            PuntosCargados.Clear();
         }
     }
 }
