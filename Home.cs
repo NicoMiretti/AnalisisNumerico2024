@@ -25,8 +25,20 @@ namespace AnalisisNumerico2024
 
         private void btnSistemaEcuaciones_Click(object sender, EventArgs e)
         {
-            SistemaEcuaciones sistemaEcuaciones = new SistemaEcuaciones(); 
+            SistemaEcuaciones sistemaEcuaciones = new SistemaEcuaciones();
             sistemaEcuaciones.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AjusteCurva ajusteCurva = new AjusteCurva();
+            ajusteCurva.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IntegracionNumerica integracionNumerica = new IntegracionNumerica();
+            integracionNumerica.Show();
         }
     }
 }

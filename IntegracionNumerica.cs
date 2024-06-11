@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AnalisisNumerico2024
 {
-    public partial class Form1 : Form
+    public partial class IntegracionNumerica : Form
     {
-        public Form1()
+        public IntegracionNumerica()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace AnalisisNumerico2024
 {
-    partial class Form1
+    partial class IntegracionNumerica
     {
         /// <summary>
         /// Required designer variable.
