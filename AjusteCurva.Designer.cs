@@ -33,6 +33,7 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
             splitContainer1 = new SplitContainer();
+            cmbMetodo = new ComboBox();
             DeleteAllButton = new Button();
             DeleteLastButton = new Button();
             CalcularButton = new Button();
@@ -54,6 +55,8 @@
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
+            lblGrado = new Label();
+            txtGrado = new TextBox();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -63,30 +66,35 @@
             // 
             // contextMenuStrip1
             // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, toolStripMenuItem2 });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(181, 48);
+            contextMenuStrip1.Size = new Size(212, 52);
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(180, 22);
+            toolStripMenuItem1.Size = new Size(211, 24);
             toolStripMenuItem1.Text = "toolStripMenuItem1";
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(180, 22);
+            toolStripMenuItem2.Size = new Size(211, 24);
             toolStripMenuItem2.Text = "toolStripMenuItem2";
             // 
             // splitContainer1
             // 
             splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
+            splitContainer1.Margin = new Padding(3, 4, 3, 4);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(txtGrado);
+            splitContainer1.Panel1.Controls.Add(lblGrado);
+            splitContainer1.Panel1.Controls.Add(cmbMetodo);
             splitContainer1.Panel1.Controls.Add(DeleteAllButton);
             splitContainer1.Panel1.Controls.Add(DeleteLastButton);
             splitContainer1.Panel1.Controls.Add(CalcularButton);
@@ -111,15 +119,27 @@
             splitContainer1.Panel2.Controls.Add(label8);
             splitContainer1.Panel2.Controls.Add(label7);
             splitContainer1.Panel2.Controls.Add(label6);
-            splitContainer1.Size = new Size(939, 536);
-            splitContainer1.SplitterDistance = 459;
+            splitContainer1.Size = new Size(1073, 715);
+            splitContainer1.SplitterDistance = 524;
+            splitContainer1.SplitterWidth = 5;
             splitContainer1.TabIndex = 1;
+            // 
+            // cmbMetodo
+            // 
+            cmbMetodo.FormattingEnabled = true;
+            cmbMetodo.Items.AddRange(new object[] { "Regresión Lineal", "Regresión Polinomial" });
+            cmbMetodo.Location = new Point(171, 170);
+            cmbMetodo.Name = "cmbMetodo";
+            cmbMetodo.Size = new Size(134, 28);
+            cmbMetodo.TabIndex = 29;
+            cmbMetodo.SelectedIndexChanged += cmbMetodo_SelectedIndexChanged;
             // 
             // DeleteAllButton
             // 
-            DeleteAllButton.Location = new Point(303, 261);
+            DeleteAllButton.Location = new Point(346, 348);
+            DeleteAllButton.Margin = new Padding(3, 4, 3, 4);
             DeleteAllButton.Name = "DeleteAllButton";
-            DeleteAllButton.Size = new Size(123, 23);
+            DeleteAllButton.Size = new Size(141, 31);
             DeleteAllButton.TabIndex = 28;
             DeleteAllButton.Text = "Borrar Todos";
             DeleteAllButton.UseVisualStyleBackColor = true;
@@ -127,9 +147,10 @@
             // 
             // DeleteLastButton
             // 
-            DeleteLastButton.Location = new Point(303, 206);
+            DeleteLastButton.Location = new Point(346, 275);
+            DeleteLastButton.Margin = new Padding(3, 4, 3, 4);
             DeleteLastButton.Name = "DeleteLastButton";
-            DeleteLastButton.Size = new Size(123, 23);
+            DeleteLastButton.Size = new Size(141, 31);
             DeleteLastButton.TabIndex = 27;
             DeleteLastButton.Text = "Eliminar Ultimo";
             DeleteLastButton.UseVisualStyleBackColor = true;
@@ -137,9 +158,10 @@
             // 
             // CalcularButton
             // 
-            CalcularButton.Location = new Point(303, 125);
+            CalcularButton.Location = new Point(346, 167);
+            CalcularButton.Margin = new Padding(3, 4, 3, 4);
             CalcularButton.Name = "CalcularButton";
-            CalcularButton.Size = new Size(123, 23);
+            CalcularButton.Size = new Size(141, 31);
             CalcularButton.TabIndex = 26;
             CalcularButton.Text = "Calcular";
             CalcularButton.UseVisualStyleBackColor = true;
@@ -147,9 +169,10 @@
             // 
             // CargarButton
             // 
-            CargarButton.Location = new Point(303, 46);
+            CargarButton.Location = new Point(346, 61);
+            CargarButton.Margin = new Padding(3, 4, 3, 4);
             CargarButton.Name = "CargarButton";
-            CargarButton.Size = new Size(123, 23);
+            CargarButton.Size = new Size(141, 31);
             CargarButton.TabIndex = 25;
             CargarButton.Text = "Cargar Punto";
             CargarButton.UseVisualStyleBackColor = true;
@@ -157,153 +180,178 @@
             // 
             // panelPuntosIngresados
             // 
-            panelPuntosIngresados.Location = new Point(155, 173);
+            panelPuntosIngresados.Location = new Point(177, 231);
+            panelPuntosIngresados.Margin = new Padding(3, 4, 3, 4);
             panelPuntosIngresados.Name = "panelPuntosIngresados";
-            panelPuntosIngresados.Size = new Size(124, 185);
+            panelPuntosIngresados.Size = new Size(142, 247);
             panelPuntosIngresados.TabIndex = 24;
             // 
             // txtTolerancia
             // 
-            txtTolerancia.Location = new Point(150, 89);
+            txtTolerancia.Location = new Point(171, 119);
+            txtTolerancia.Margin = new Padding(3, 4, 3, 4);
             txtTolerancia.Name = "txtTolerancia";
-            txtTolerancia.Size = new Size(118, 23);
+            txtTolerancia.Size = new Size(134, 27);
             txtTolerancia.TabIndex = 22;
             // 
             // txtY
             // 
-            txtY.Location = new Point(212, 47);
+            txtY.Location = new Point(242, 63);
+            txtY.Margin = new Padding(3, 4, 3, 4);
             txtY.Name = "txtY";
-            txtY.Size = new Size(56, 23);
+            txtY.Size = new Size(63, 27);
             txtY.TabIndex = 21;
             // 
             // txtX
             // 
-            txtX.Location = new Point(150, 47);
+            txtX.Location = new Point(171, 63);
+            txtX.Margin = new Padding(3, 4, 3, 4);
             txtX.Name = "txtX";
-            txtX.Size = new Size(56, 23);
+            txtX.Size = new Size(63, 27);
             txtX.TabIndex = 20;
             // 
             // lblPuntosIngresados
             // 
             lblPuntosIngresados.AutoSize = true;
-            lblPuntosIngresados.Location = new Point(35, 173);
+            lblPuntosIngresados.Location = new Point(33, 231);
             lblPuntosIngresados.Name = "lblPuntosIngresados";
-            lblPuntosIngresados.Size = new Size(107, 15);
+            lblPuntosIngresados.Size = new Size(132, 20);
             lblPuntosIngresados.TabIndex = 19;
             lblPuntosIngresados.Text = "Puntos Ingresados:";
             // 
             // lblMetodoAUtilizar
             // 
             lblMetodoAUtilizar.AutoSize = true;
-            lblMetodoAUtilizar.Location = new Point(41, 129);
+            lblMetodoAUtilizar.Location = new Point(39, 170);
             lblMetodoAUtilizar.Name = "lblMetodoAUtilizar";
-            lblMetodoAUtilizar.Size = new Size(99, 15);
+            lblMetodoAUtilizar.Size = new Size(126, 20);
             lblMetodoAUtilizar.TabIndex = 18;
             lblMetodoAUtilizar.Text = "Método a utilizar:";
             // 
             // lblTolerancia
             // 
             lblTolerancia.AutoSize = true;
-            lblTolerancia.Location = new Point(74, 92);
+            lblTolerancia.Location = new Point(85, 123);
             lblTolerancia.Name = "lblTolerancia";
-            lblTolerancia.Size = new Size(63, 15);
+            lblTolerancia.Size = new Size(80, 20);
             lblTolerancia.TabIndex = 17;
             lblTolerancia.Text = "Tolerancia:";
             // 
             // lblIngresarPunto
             // 
             lblIngresarPunto.AutoSize = true;
-            lblIngresarPunto.Location = new Point(16, 50);
+            lblIngresarPunto.Location = new Point(18, 67);
             lblIngresarPunto.Name = "lblIngresarPunto";
-            lblIngresarPunto.Size = new Size(121, 15);
+            lblIngresarPunto.Size = new Size(149, 20);
             lblIngresarPunto.TabIndex = 16;
             lblIngresarPunto.Text = "Ingresar Punto (X , Y):";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(14, 12);
             label1.Name = "label1";
-            label1.Size = new Size(96, 15);
+            label1.Size = new Size(124, 20);
             label1.TabIndex = 15;
             label1.Text = "Datos de Entrada";
             // 
             // panelGrafica
             // 
-            panelGrafica.Location = new Point(16, 173);
+            panelGrafica.Location = new Point(18, 231);
+            panelGrafica.Margin = new Padding(3, 4, 3, 4);
             panelGrafica.Name = "panelGrafica";
-            panelGrafica.Size = new Size(448, 351);
+            panelGrafica.Size = new Size(512, 468);
             panelGrafica.TabIndex = 7;
             // 
             // EfectividadAjuste
             // 
             EfectividadAjuste.AutoSize = true;
-            EfectividadAjuste.Location = new Point(183, 133);
+            EfectividadAjuste.Location = new Point(209, 177);
             EfectividadAjuste.Name = "EfectividadAjuste";
-            EfectividadAjuste.Size = new Size(17, 15);
+            EfectividadAjuste.Size = new Size(21, 20);
             EfectividadAjuste.TabIndex = 6;
             EfectividadAjuste.Text = "--";
             // 
             // Correccion
             // 
             Correccion.AutoSize = true;
-            Correccion.Location = new Point(183, 92);
+            Correccion.Location = new Point(209, 123);
             Correccion.Name = "Correccion";
-            Correccion.Size = new Size(17, 15);
+            Correccion.Size = new Size(21, 20);
             Correccion.TabIndex = 5;
             Correccion.Text = "--";
             // 
             // FuncionObtenida
             // 
             FuncionObtenida.AutoSize = true;
-            FuncionObtenida.Location = new Point(183, 50);
+            FuncionObtenida.Location = new Point(209, 67);
             FuncionObtenida.Name = "FuncionObtenida";
-            FuncionObtenida.Size = new Size(17, 15);
+            FuncionObtenida.Size = new Size(21, 20);
             FuncionObtenida.TabIndex = 4;
             FuncionObtenida.Text = "--";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(30, 133);
+            label9.Location = new Point(34, 177);
             label9.Name = "label9";
-            label9.Size = new Size(120, 15);
+            label9.Size = new Size(153, 20);
             label9.TabIndex = 3;
             label9.Text = "Efectividad del Ajuste";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(76, 89);
+            label8.Location = new Point(87, 119);
             label8.Name = "label8";
-            label8.Size = new Size(74, 15);
+            label8.Size = new Size(92, 20);
             label8.TabIndex = 2;
             label8.Text = "Correción (r)";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(48, 50);
+            label7.Location = new Point(55, 67);
             label7.Name = "label7";
-            label7.Size = new Size(102, 15);
+            label7.Size = new Size(126, 20);
             label7.TabIndex = 1;
             label7.Text = "Función Obtenida";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(16, 2);
+            label6.Location = new Point(18, 3);
             label6.Name = "label6";
-            label6.Size = new Size(87, 15);
+            label6.Size = new Size(114, 20);
             label6.TabIndex = 0;
             label6.Text = "Datos de Salida";
             // 
+            // lblGrado
+            // 
+            lblGrado.AutoSize = true;
+            lblGrado.Location = new Point(346, 122);
+            lblGrado.Name = "lblGrado";
+            lblGrado.Size = new Size(53, 20);
+            lblGrado.TabIndex = 30;
+            lblGrado.Text = "Grado:";
+            lblGrado.Visible = false;
+            // 
+            // txtGrado
+            // 
+            txtGrado.Location = new Point(405, 119);
+            txtGrado.Margin = new Padding(3, 4, 3, 4);
+            txtGrado.Name = "txtGrado";
+            txtGrado.Size = new Size(63, 27);
+            txtGrado.TabIndex = 31;
+            txtGrado.Visible = false;
+            // 
             // AjusteCurva
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(939, 536);
+            ClientSize = new Size(1073, 715);
             Controls.Add(splitContainer1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AjusteCurva";
             Text = "Form1";
             contextMenuStrip1.ResumeLayout(false);
@@ -342,5 +390,8 @@
         private Label Correccion;
         private Label FuncionObtenida;
         private Label label9;
+        private ComboBox cmbMetodo;
+        private Label lblGrado;
+        private TextBox txtGrado;
     }
 }
