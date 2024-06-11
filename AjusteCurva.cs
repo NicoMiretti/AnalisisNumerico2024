@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Analisis_Numerico;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +36,16 @@ namespace AnalisisNumerico2024
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+            panel2.Controls.Clear();
+
+            Graficador graficador = new Graficador();
+            
+            panel2.Controls.Add(graficador);
+            graficador.Show();
         }
     }
 }

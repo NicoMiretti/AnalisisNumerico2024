@@ -48,14 +48,14 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            FuncionObtenida = new Label();
-            Correccion = new Label();
-            EfectividadAjuste = new Label();
             panel2 = new Panel();
+            EfectividadAjuste = new Label();
+            Correccion = new Label();
+            FuncionObtenida = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -247,60 +247,13 @@
             label1.TabIndex = 15;
             label1.Text = "Datos de Entrada";
             // 
-            // label6
+            // panel2
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(16, 2);
-            label6.Name = "label6";
-            label6.Size = new Size(87, 15);
-            label6.TabIndex = 0;
-            label6.Text = "Datos de Salida";
-            label6.Click += label6_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(48, 50);
-            label7.Name = "label7";
-            label7.Size = new Size(102, 15);
-            label7.TabIndex = 1;
-            label7.Text = "Función Obtenida";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(76, 89);
-            label8.Name = "label8";
-            label8.Size = new Size(74, 15);
-            label8.TabIndex = 2;
-            label8.Text = "Correción (r)";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(30, 133);
-            label9.Name = "label9";
-            label9.Size = new Size(120, 15);
-            label9.TabIndex = 3;
-            label9.Text = "Efectividad del Ajuste";
-            // 
-            // FuncionObtenida
-            // 
-            FuncionObtenida.AutoSize = true;
-            FuncionObtenida.Location = new Point(183, 50);
-            FuncionObtenida.Name = "FuncionObtenida";
-            FuncionObtenida.Size = new Size(17, 15);
-            FuncionObtenida.TabIndex = 4;
-            FuncionObtenida.Text = "--";
-            // 
-            // Correccion
-            // 
-            Correccion.AutoSize = true;
-            Correccion.Location = new Point(183, 92);
-            Correccion.Name = "Correccion";
-            Correccion.Size = new Size(17, 15);
-            Correccion.TabIndex = 5;
-            Correccion.Text = "--";
+            panel2.Location = new Point(16, 173);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(448, 351);
+            panel2.TabIndex = 7;
+            panel2.Paint += panel2_Paint;
             // 
             // EfectividadAjuste
             // 
@@ -311,12 +264,60 @@
             EfectividadAjuste.TabIndex = 6;
             EfectividadAjuste.Text = "--";
             // 
-            // panel2
+            // Correccion
             // 
-            panel2.Location = new Point(16, 173);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(448, 351);
-            panel2.TabIndex = 7;
+            Correccion.AutoSize = true;
+            Correccion.Location = new Point(183, 92);
+            Correccion.Name = "Correccion";
+            Correccion.Size = new Size(17, 15);
+            Correccion.TabIndex = 5;
+            Correccion.Text = "--";
+            // 
+            // FuncionObtenida
+            // 
+            FuncionObtenida.AutoSize = true;
+            FuncionObtenida.Location = new Point(183, 50);
+            FuncionObtenida.Name = "FuncionObtenida";
+            FuncionObtenida.Size = new Size(17, 15);
+            FuncionObtenida.TabIndex = 4;
+            FuncionObtenida.Text = "--";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(30, 133);
+            label9.Name = "label9";
+            label9.Size = new Size(120, 15);
+            label9.TabIndex = 3;
+            label9.Text = "Efectividad del Ajuste";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(76, 89);
+            label8.Name = "label8";
+            label8.Size = new Size(74, 15);
+            label8.TabIndex = 2;
+            label8.Text = "Correción (r)";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(48, 50);
+            label7.Name = "label7";
+            label7.Size = new Size(102, 15);
+            label7.TabIndex = 1;
+            label7.Text = "Función Obtenida";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(16, 2);
+            label6.Name = "label6";
+            label6.Size = new Size(87, 15);
+            label6.TabIndex = 0;
+            label6.Text = "Datos de Salida";
+            label6.Click += label6_Click;
             // 
             // AjusteCurva
             // 
