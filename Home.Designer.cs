@@ -31,8 +31,8 @@
             btnRaices = new Button();
             btnSistemaEcuaciones = new Button();
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            btnIntegracionNumerica = new Button();
+            btnRegresionLineal = new Button();
             SuspendLayout();
             // 
             // btnRaices
@@ -67,33 +67,33 @@
             label1.TabIndex = 2;
             label1.Text = "Seleccione la aplicación:";
             // 
-            // button1
+            // btnIntegracionNumerica
             // 
-            button1.Location = new Point(418, 260);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 58);
-            button1.TabIndex = 3;
-            button1.Text = "Calcular Integración Numerica";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnIntegracionNumerica.Location = new Point(418, 260);
+            btnIntegracionNumerica.Name = "btnIntegracionNumerica";
+            btnIntegracionNumerica.Size = new Size(134, 58);
+            btnIntegracionNumerica.TabIndex = 3;
+            btnIntegracionNumerica.Text = "Calcular Integración Numerica";
+            btnIntegracionNumerica.UseVisualStyleBackColor = true;
+            btnIntegracionNumerica.Click += btnIntegracionNumerica_Click;
             // 
-            // button2
+            // btnRegresionLineal
             // 
-            button2.Location = new Point(224, 260);
-            button2.Name = "button2";
-            button2.Size = new Size(134, 58);
-            button2.TabIndex = 4;
-            button2.Text = "Calcular Regreción Lineal";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnRegresionLineal.Location = new Point(224, 260);
+            btnRegresionLineal.Name = "btnRegresionLineal";
+            btnRegresionLineal.Size = new Size(134, 58);
+            btnRegresionLineal.TabIndex = 4;
+            btnRegresionLineal.Text = "Calcular Regresión Lineal";
+            btnRegresionLineal.UseVisualStyleBackColor = true;
+            btnRegresionLineal.Click += btnRegresionLineal_Click;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnRegresionLineal);
+            Controls.Add(btnIntegracionNumerica);
             Controls.Add(label1);
             Controls.Add(btnSistemaEcuaciones);
             Controls.Add(btnRaices);
@@ -109,7 +109,7 @@
         private Button btnRaices;
         private Button btnSistemaEcuaciones;
         private Label label1;
-        private Button button1;
-        private Button button2;
+        private Button btnIntegracionNumerica;
+        private Button btnRegresionLineal;
     }
 }

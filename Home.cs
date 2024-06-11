@@ -29,13 +29,13 @@ namespace AnalisisNumerico2024
             sistemaEcuaciones.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnRegresionLineal_Click(object sender, EventArgs e)
         {
             AjusteCurva ajusteCurva = new AjusteCurva();
             ajusteCurva.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnIntegracionNumerica_Click(object sender, EventArgs e)
         {
             IntegracionNumerica integracionNumerica = new IntegracionNumerica();
             integracionNumerica.Show();

@@ -38,15 +38,13 @@
             CalcularButton = new Button();
             CargarButton = new Button();
             panel1 = new Panel();
-            menuStrip1 = new MenuStrip();
-            Metodo = new ToolStripMenuItem();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
+            txtTolerancia = new TextBox();
+            txtY = new TextBox();
+            txtX = new TextBox();
+            lblPuntosIngresados = new Label();
+            lblMetodoAUtilizar = new Label();
+            lblTolerancia = new Label();
+            lblIngresarPunto = new Label();
             label1 = new Label();
             panel2 = new Panel();
             EfectividadAjuste = new Label();
@@ -61,7 +59,6 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // contextMenuStrip1
@@ -95,14 +92,13 @@
             splitContainer1.Panel1.Controls.Add(CalcularButton);
             splitContainer1.Panel1.Controls.Add(CargarButton);
             splitContainer1.Panel1.Controls.Add(panel1);
-            splitContainer1.Panel1.Controls.Add(menuStrip1);
-            splitContainer1.Panel1.Controls.Add(textBox3);
-            splitContainer1.Panel1.Controls.Add(textBox2);
-            splitContainer1.Panel1.Controls.Add(textBox1);
-            splitContainer1.Panel1.Controls.Add(label5);
-            splitContainer1.Panel1.Controls.Add(label4);
-            splitContainer1.Panel1.Controls.Add(label3);
-            splitContainer1.Panel1.Controls.Add(label2);
+            splitContainer1.Panel1.Controls.Add(txtTolerancia);
+            splitContainer1.Panel1.Controls.Add(txtY);
+            splitContainer1.Panel1.Controls.Add(txtX);
+            splitContainer1.Panel1.Controls.Add(lblPuntosIngresados);
+            splitContainer1.Panel1.Controls.Add(lblMetodoAUtilizar);
+            splitContainer1.Panel1.Controls.Add(lblTolerancia);
+            splitContainer1.Panel1.Controls.Add(lblIngresarPunto);
             splitContainer1.Panel1.Controls.Add(label1);
             // 
             // splitContainer1.Panel2
@@ -163,85 +159,67 @@
             panel1.Size = new Size(124, 185);
             panel1.TabIndex = 24;
             // 
-            // menuStrip1
+            // txtTolerancia
             // 
-            menuStrip1.Dock = DockStyle.None;
-            menuStrip1.GripStyle = ToolStripGripStyle.Visible;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { Metodo });
-            menuStrip1.Location = new Point(150, 129);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(73, 24);
-            menuStrip1.TabIndex = 23;
-            menuStrip1.Text = "menuStrip1";
+            txtTolerancia.Location = new Point(150, 89);
+            txtTolerancia.Name = "txtTolerancia";
+            txtTolerancia.Size = new Size(118, 23);
+            txtTolerancia.TabIndex = 22;
             // 
-            // Metodo
+            // txtY
             // 
-            Metodo.Name = "Metodo";
-            Metodo.Size = new Size(61, 20);
-            Metodo.Text = "Metodo";
+            txtY.Location = new Point(212, 47);
+            txtY.Name = "txtY";
+            txtY.Size = new Size(56, 23);
+            txtY.TabIndex = 21;
             // 
-            // textBox3
+            // txtX
             // 
-            textBox3.Location = new Point(150, 89);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 22;
+            txtX.Location = new Point(150, 47);
+            txtX.Name = "txtX";
+            txtX.Size = new Size(56, 23);
+            txtX.TabIndex = 20;
             // 
-            // textBox2
+            // lblPuntosIngresados
             // 
-            textBox2.Location = new Point(216, 47);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(27, 23);
-            textBox2.TabIndex = 21;
+            lblPuntosIngresados.AutoSize = true;
+            lblPuntosIngresados.Location = new Point(35, 173);
+            lblPuntosIngresados.Name = "lblPuntosIngresados";
+            lblPuntosIngresados.Size = new Size(107, 15);
+            lblPuntosIngresados.TabIndex = 19;
+            lblPuntosIngresados.Text = "Puntos Ingresados:";
             // 
-            // textBox1
+            // lblMetodoAUtilizar
             // 
-            textBox1.Location = new Point(150, 47);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(27, 23);
-            textBox1.TabIndex = 20;
+            lblMetodoAUtilizar.AutoSize = true;
+            lblMetodoAUtilizar.Location = new Point(41, 129);
+            lblMetodoAUtilizar.Name = "lblMetodoAUtilizar";
+            lblMetodoAUtilizar.Size = new Size(99, 15);
+            lblMetodoAUtilizar.TabIndex = 18;
+            lblMetodoAUtilizar.Text = "Método a utilizar:";
             // 
-            // label5
+            // lblTolerancia
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(38, 173);
-            label5.Name = "label5";
-            label5.Size = new Size(99, 15);
-            label5.TabIndex = 19;
-            label5.Text = "Puntos Ingreados";
+            lblTolerancia.AutoSize = true;
+            lblTolerancia.Location = new Point(74, 92);
+            lblTolerancia.Name = "lblTolerancia";
+            lblTolerancia.Size = new Size(63, 15);
+            lblTolerancia.TabIndex = 17;
+            lblTolerancia.Text = "Tolerancia:";
             // 
-            // label4
+            // lblIngresarPunto
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(38, 129);
-            label4.Name = "label4";
-            label4.Size = new Size(96, 15);
-            label4.TabIndex = 18;
-            label4.Text = "Método a utilizar";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(63, 92);
-            label3.Name = "label3";
-            label3.Size = new Size(60, 15);
-            label3.TabIndex = 17;
-            label3.Text = "Tolerancia";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(16, 50);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 15);
-            label2.TabIndex = 16;
-            label2.Text = "Ingresar Punto (X , Y)";
+            lblIngresarPunto.AutoSize = true;
+            lblIngresarPunto.Location = new Point(16, 50);
+            lblIngresarPunto.Name = "lblIngresarPunto";
+            lblIngresarPunto.Size = new Size(121, 15);
+            lblIngresarPunto.TabIndex = 16;
+            lblIngresarPunto.Text = "Ingresar Punto (X , Y):";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(2, 2);
+            label1.Location = new Point(12, 9);
             label1.Name = "label1";
             label1.Size = new Size(96, 15);
             label1.TabIndex = 15;
@@ -334,8 +312,6 @@
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -349,15 +325,13 @@
         private Button CalcularButton;
         private Button CargarButton;
         private Panel panel1;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem Metodo;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
+        private TextBox txtTolerancia;
+        private TextBox txtY;
+        private TextBox txtX;
+        private Label lblPuntosIngresados;
+        private Label lblMetodoAUtilizar;
+        private Label lblTolerancia;
+        private Label lblIngresarPunto;
         private Label label1;
         private Label label6;
         private Label label8;
