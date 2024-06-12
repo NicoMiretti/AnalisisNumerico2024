@@ -166,7 +166,7 @@ namespace AnalisisNumerico2024
         private void button1_Click(object sender, EventArgs e)
         {
             double resultado = 0;
-            string funcion =  IngresarFuncion.ToString();
+            string funcion = IngresarFuncion.Text;
             double xi = Convert.ToDouble(TextBoxXi.Text);
             double xd = Convert.ToDouble(TextBoxXd.Text);
             int intervalos = Convert.ToInt32(Intervalo.Text);
