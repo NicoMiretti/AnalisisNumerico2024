@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
+            comboBox1 = new ComboBox();
             Intervalo = new TextBox();
             IngresarFuncion = new TextBox();
             TextBoxXd = new TextBox();
@@ -40,7 +41,7 @@
             label4 = new Label();
             label3 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
+            txtResultado = new TextBox();
             label7 = new Label();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -57,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(comboBox1);
             splitContainer1.Panel1.Controls.Add(Intervalo);
             splitContainer1.Panel1.Controls.Add(IngresarFuncion);
             splitContainer1.Panel1.Controls.Add(TextBoxXd);
@@ -71,12 +73,22 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(textBox1);
+            splitContainer1.Panel2.Controls.Add(txtResultado);
             splitContainer1.Panel2.Controls.Add(label7);
             splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Size = new Size(800, 450);
             splitContainer1.SplitterDistance = 323;
             splitContainer1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Trapecios Simple", "Trapecios Múltiple", "Simpson 1/3 Simple", "Simpson 1/3 Múltiple ", "Simpson 3/8", "Combinado Simpsonn 3/8 y Simpsin 1/3 Simple" });
+            comboBox1.Location = new Point(106, 176);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(161, 23);
+            comboBox1.TabIndex = 11;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // Intervalo
             // 
@@ -125,6 +137,7 @@
             button1.TabIndex = 5;
             button1.Text = "Calcular";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label6
             // 
@@ -175,12 +188,12 @@
             label1.TabIndex = 0;
             label1.Text = "Datos de Entrada";
             // 
-            // textBox1
+            // txtResultado
             // 
-            textBox1.Location = new Point(99, 49);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(151, 23);
-            textBox1.TabIndex = 2;
+            txtResultado.Location = new Point(99, 49);
+            txtResultado.Name = "txtResultado";
+            txtResultado.Size = new Size(151, 23);
+            txtResultado.TabIndex = 2;
             // 
             // label7
             // 
@@ -202,13 +215,13 @@
             label2.TabIndex = 0;
             label2.Text = "Resultado";
             // 
-            // Form1
+            // IntegracionNumerica
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(splitContainer1);
-            Name = "Form1";
+            Name = "IntegracionNumerica";
             Text = "Form1";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
@@ -228,7 +241,7 @@
         private Label label4;
         private Label label3;
         private Label label1;
-        private TextBox textBox1;
+        private TextBox txtResultado;
         private Label label7;
         private Label label2;
         private TextBox TextBoxXd;
@@ -236,5 +249,6 @@
         private Label label8;
         private TextBox IngresarFuncion;
         private TextBox Intervalo;
+        private ComboBox comboBox1;
     }
 }

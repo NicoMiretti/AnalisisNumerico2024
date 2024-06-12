@@ -106,7 +106,7 @@ namespace AnalisisNumerico2024
             if (Funcion.Sintaxis(funcion, 'x'))
             {
                 double h = (xd - xi) / 3;
-                return (3 * h / 8) * (Funcion.EvaluaFx(xi) + 3 * Funcion.EvaluaFx((xi + h)) + 3 * Funcion.EvaluaFx(xi + 2 * h) + Funcion.EvaluaFx(xd))
+                return (3 * h / 8) * (Funcion.EvaluaFx(xi) + 3 * Funcion.EvaluaFx((xi + h)) + 3 * Funcion.EvaluaFx(xi + 2 * h) + Funcion.EvaluaFx(xd));
             }
             else
                 throw new Exception("Función Mal Ingresada");
@@ -120,7 +120,7 @@ namespace AnalisisNumerico2024
             if (Funcion.Sintaxis(funcion, 'x'))
             {
                 double h = (xd - xi) / n;
-                double sumPares = 0, sumImpares = 0;
+                //double sumPares = 0, sumImpares = 0;
                 double resultado = 0;
                 bool simpson3_8Hecho = false;
 
@@ -130,20 +130,17 @@ namespace AnalisisNumerico2024
                     {
                         double nuevoXi = xi + h * (n - 3);
                         resultado = CalcularIntegralSimpson3_8(funcion, nuevoXi, xd);
-                        n = n - 3;
+                        n -= 3;
                         simpson3_8Hecho = true;
                     }
                     if (i % 2 == 0)
                     {
-                        sumPares += Funcion.EvaluaFx(xi + h * i);
-                    }
-                    else
-                    {
-                        sumImpares += Funcion.EvaluaFx(xi + h * i);
+                        resultado += CalcularIntegralSimpson1_3Multiple(funcion, xi, xi + n * h, n);
                     }
                 }
-
+                return resultado;
             }
+            throw new Exception("Función Mal Ingresada");
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -159,6 +156,42 @@ namespace AnalisisNumerico2024
         private void IngresarFuncion_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double resultado = 0;
+            string funcion =  IngresarFuncion.ToString();
+            double xi = Convert.ToDouble(TextBoxXi.Text);
+            double xd = Convert.ToDouble(TextBoxXd.Text);
+            int intervalos = Convert.ToInt32(Intervalo.Text);
+
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    resultado = CalcularIntegralTrapeciosSimple(funcion, xi, xd);
+                    break;
+                case 1:
+                    resultado = CalcularIntegralTrapeciosMultiples(funcion, xi, xd, intervalos);
+                    break;
+                case 2:
+                    resultado = CalcularIntegralSimpson1_3Simple(funcion, xi, xd);
+                    break;
+                case 3:
+                    resultado = CalcularIntegralSimpson1_3Multiple(funcion, xi, xd, intervalos);
+                    break;
+                case 4:
+                    resultado = CalcularIntegralAmbosMetodosSimpson(funcion, xi, xd,intervalos);
+                    break;
+                default:
+                    break;
+            }
+            txtResultado.Text = resultado.ToString();
         }
     }
 }
