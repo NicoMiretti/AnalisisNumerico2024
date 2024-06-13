@@ -127,12 +127,13 @@ namespace AnalisisNumerico2024
                 double resultado = 0;
                 double resultado2 = 0;
                 bool simpson3_8Hecho = false;
+                double nuevoXi = 0;
 
                 for (int i = 1; i < n; i++)
                 {
                     if (n % 2 != 0 && !simpson3_8Hecho)
                     {
-                        double nuevoXi = xi + h * (n - 3);
+                        nuevoXi = xi + h * (n - 3);
                         resultado = CalcularIntegralSimpson3_8(funcion, nuevoXi, xd);
                         n -= 3;
                         simpson3_8Hecho = true;
@@ -150,7 +151,7 @@ namespace AnalisisNumerico2024
                                 sumImpares += Funcion.EvaluaFx(xi + (h * i));
                             }
                         }
-                        resultado2 = (h / 3) * (Funcion.EvaluaFx(xi) + 4 * sumImpares + 2 * sumPares + Funcion.EvaluaFx(xd));
+                        resultado2 = (h / 3) * (Funcion.EvaluaFx(xi) + 4 * sumImpares + 2 * sumPares + Funcion.EvaluaFx(nuevoXi));
                     }                    
                 }
                 return resultado + resultado2;
