@@ -149,7 +149,7 @@ namespace AnalisisNumerico2024
             if (string.IsNullOrWhiteSpace(txtGrado.Text) ||
                 !int.TryParse(txtGrado.Text, out grado))
             {
-                if(grado < 2 || grado > 10)
+                if (grado < 2 || grado > 10)
                 {
                     MessageBox.Show("Por favor, el grado debe estar entre 2 y 10.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -165,7 +165,9 @@ namespace AnalisisNumerico2024
                 if (i == 0 && ai != 0)
                 {
                     funcion = $"{ai}";
-                }else if (i == 1 && ai != 0){
+                }
+                else if (i == 1 && ai != 0)
+                {
                     funcion = $"{ai}x {signo}" + funcion;
                 }
                 else
@@ -193,9 +195,9 @@ namespace AnalisisNumerico2024
                 for (int i = 0; i < vectorResultado.Count(); i++)
                 {
                     suma += vectorResultado[i] * Math.Pow(x, i);
-                }                
+                }
                 Sr += Math.Pow(suma - y, 2);
-                St += Math.Pow(sumY / n - y, 2);                
+                St += Math.Pow(sumY / n - y, 2);
             }
             double r = Math.Sqrt(((St - Sr) / St)) * 100;
             FuncionObtenida.Text = $"{funcion}";
@@ -219,7 +221,8 @@ namespace AnalisisNumerico2024
             {
                 x = punto[0];
                 y = punto[1];
-                for (int fila = 0; fila < dimension; fila++){
+                for (int fila = 0; fila < dimension; fila++)
+                {
                     for (int col = 0; col < dimension; col++)
                     {
                         matriz[fila, col] += Math.Pow(x, fila + col);
@@ -228,7 +231,7 @@ namespace AnalisisNumerico2024
                 }
             }
             return matriz;
-        }        
+        }
         public void DeleteLastButton_Click(object sender, EventArgs e)
         {
             panelPuntosIngresados.Controls.RemoveAt(PuntosCargados.Count - 1);
