@@ -17,6 +17,9 @@ namespace AnalisisNumerico2024
         public IntegracionNumerica()
         {
             InitializeComponent();
+
+            Intervalo.Visible = false;
+            IntervaloLabel.Visible = false;
         }
 
         double CalcularIntegralTrapeciosSimple(string funcion, double xi, double xd)
@@ -25,7 +28,7 @@ namespace AnalisisNumerico2024
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
-                return (Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi) / 2;
+                return ((Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi)) / 2;
             }
             else
             {
@@ -44,7 +47,7 @@ namespace AnalisisNumerico2024
                 double sum = 0;
                 for (int i = 0; i < n; i++)
                 {
-                    sum += Funcion.EvaluaFx(xi + h * i);
+                    sum += Funcion.EvaluaFx(xi + (h * i));
                 }
                 return (h / 2) * (Funcion.EvaluaFx(xi) + 2 * sum + Funcion.EvaluaFx(xd));
             }
@@ -83,11 +86,11 @@ namespace AnalisisNumerico2024
                 {
                     if (i % 2 == 0)
                     {
-                        sumPares += Funcion.EvaluaFx(xi + h * i);
+                        sumPares += Funcion.EvaluaFx(xi + (h * i));
                     }
                     else
                     {
-                        sumImpares += Funcion.EvaluaFx(xi + h * i);
+                        sumImpares += Funcion.EvaluaFx(xi + (h * i));
                     }
 
                 }
@@ -107,7 +110,7 @@ namespace AnalisisNumerico2024
             if (Funcion.Sintaxis(funcion, 'x'))
             {
                 double h = (xd - xi) / 3;
-                return (3 * h / 8) * (Funcion.EvaluaFx(xi) + 3 * Funcion.EvaluaFx((xi + h)) + 3 * Funcion.EvaluaFx(xi + 2 * h) + Funcion.EvaluaFx(xd));
+                return (3 * h / 8) * (Funcion.EvaluaFx(xi) + 3 * Funcion.EvaluaFx(xi + h) + 3 * Funcion.EvaluaFx(xi + (2 * h)) + Funcion.EvaluaFx(xd));
             }
             else
                 throw new Exception("Función Mal Ingresada");
@@ -161,7 +164,18 @@ namespace AnalisisNumerico2024
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 4)
+            {
+                Intervalo.Visible = true;
+                IntervaloLabel.Visible = true;
+                Intervalo.Enabled = true;
+            }
+            else
+            {
+                Intervalo.Visible = false;
+                IntervaloLabel.Visible = false;
+                Intervalo.Enabled = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -170,29 +184,27 @@ namespace AnalisisNumerico2024
             string funcion = IngresarFuncion.Text;
             double xi = Convert.ToDouble(TextBoxXi.Text);
             double xd = Convert.ToDouble(TextBoxXd.Text);
-            int intervalos = Convert.ToInt32(Intervalo.Text);
+            int intervalos = Intervalo.Text != "" ? Convert.ToInt32(Intervalo.Text) : 0  ;
 
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
                     resultado = CalcularIntegralTrapeciosSimple(funcion, xi, xd);
-                    Intervalo.Enabled = false;
+
                     break;
                 case 1:
                     resultado = CalcularIntegralTrapeciosMultiples(funcion, xi, xd, intervalos);
-                    Intervalo.Enabled = true;
                     break;
                 case 2:
                     resultado = CalcularIntegralSimpson1_3Simple(funcion, xi, xd);
-                    Intervalo.Enabled = false;
+
                     break;
                 case 3:
                     resultado = CalcularIntegralSimpson1_3Multiple(funcion, xi, xd, intervalos);
-                    Intervalo.Enabled = true;
+
                     break;
                 case 4:
                     resultado = CalcularIntegralAmbosMetodosSimpson(funcion, xi, xd,intervalos);
-                    Intervalo.Enabled = true;
                     break;
                 default:
                     break;
