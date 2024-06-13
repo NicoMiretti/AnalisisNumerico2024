@@ -83,7 +83,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Trapecios Simple", "Trapecios Múltiple", "Simpson 1/3 Simple", "Simpson 1/3 Múltiple ", "Simpson 3/8", "Metodo Simpson" });
+            comboBox1.Items.AddRange(new object[] { "Trapecios Simple", "Trapecios Múltiple", "Simpson 1/3 Simple", "Simpson 1/3 Múltiple ", "Simpson 3/8", "Simpson Combinado" });
             comboBox1.Location = new Point(106, 176);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(161, 23);
