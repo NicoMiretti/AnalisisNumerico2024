@@ -83,7 +83,7 @@
             btnRegresionLineal.Name = "btnRegresionLineal";
             btnRegresionLineal.Size = new Size(134, 58);
             btnRegresionLineal.TabIndex = 4;
-            btnRegresionLineal.Text = "Calcular Regresión Lineal";
+            btnRegresionLineal.Text = "Ajuste de curvas";
             btnRegresionLineal.UseVisualStyleBackColor = true;
             btnRegresionLineal.Click += btnRegresionLineal_Click;
             // 
