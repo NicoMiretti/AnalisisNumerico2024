@@ -138,7 +138,8 @@ namespace AnalisisNumerico2024
                     }
                     if (i % 2 == 0)
                     {
-                        resultado += CalcularIntegralSimpson1_3Multiple(funcion, xi, xi + n * h, n);
+                        double nuevoXd = xi + h * (n - 3);
+                        resultado += CalcularIntegralSimpson1_3Multiple(funcion, xi, nuevoXd, n);
                     }
                 }
                 return resultado;
@@ -147,7 +148,7 @@ namespace AnalisisNumerico2024
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 4 || comboBox1.SelectedIndex == 5)
+            if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 5)
             {
                 Intervalo.Visible = true;
                 IntervaloLabel.Visible = true;
