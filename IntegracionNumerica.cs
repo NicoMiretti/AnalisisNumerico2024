@@ -25,7 +25,6 @@ namespace AnalisisNumerico2024
         double CalcularIntegralTrapeciosSimple(string funcion, double xi, double xd)
         {
             Calculo Funcion = new Calculo();
-
             if (Funcion.Sintaxis(funcion, 'x'))
             {
                 return ((Funcion.EvaluaFx(xi) + Funcion.EvaluaFx(xd)) * (xd - xi)) / 2;
@@ -45,7 +44,7 @@ namespace AnalisisNumerico2024
             {
                 double h = (xd - xi) / n;
                 double sum = 0;
-                for (int i = 0; i < n; i++)
+                for (int i = 1; i < n; i++)
                 {
                     sum += Funcion.EvaluaFx(xi + (h * i));
                 }
@@ -53,7 +52,7 @@ namespace AnalisisNumerico2024
             }
             else
             {
-                throw new Exception("Función Mal Ingresada"); ;
+                throw new Exception("Función Mal Ingresada");
             }
         }
 
@@ -82,7 +81,7 @@ namespace AnalisisNumerico2024
                 double h = (xd - xi) / n;
                 double sumPares = 0, sumImpares = 0;
 
-                for (int i = 0; i < n; i++)
+                for (int i = 1; i < n; i++)
                 {
                     if (i % 2 == 0)
                     {
@@ -128,7 +127,7 @@ namespace AnalisisNumerico2024
                 double resultado = 0;
                 bool simpson3_8Hecho = false;
 
-                for (int i = 0; i < n; i++)
+                for (int i = 1; i < n; i++)
                 {
                     if (n % 2 != 0 && !simpson3_8Hecho)
                     {
@@ -146,22 +145,6 @@ namespace AnalisisNumerico2024
             }
             throw new Exception("Función Mal Ingresada");
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IngresarFuncion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 4)
@@ -190,7 +173,6 @@ namespace AnalisisNumerico2024
             {
                 case 0:
                     resultado = CalcularIntegralTrapeciosSimple(funcion, xi, xd);
-
                     break;
                 case 1:
                     resultado = CalcularIntegralTrapeciosMultiples(funcion, xi, xd, intervalos);
@@ -204,6 +186,9 @@ namespace AnalisisNumerico2024
 
                     break;
                 case 4:
+                    resultado = CalcularIntegralSimpson3_8(funcion, xi, xd);
+                    break;
+                case 5:
                     resultado = CalcularIntegralAmbosMetodosSimpson(funcion, xi, xd,intervalos);
                     break;
                 default:

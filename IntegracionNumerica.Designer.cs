@@ -103,7 +103,6 @@
             IngresarFuncion.Name = "IngresarFuncion";
             IngresarFuncion.Size = new Size(193, 23);
             IngresarFuncion.TabIndex = 9;
-            IngresarFuncion.TextChanged += IngresarFuncion_TextChanged;
             // 
             // TextBoxXd
             // 
@@ -157,7 +156,6 @@
             label5.Size = new Size(24, 15);
             label5.TabIndex = 3;
             label5.Text = "Xd:";
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -204,7 +202,6 @@
             label7.Size = new Size(34, 15);
             label7.TabIndex = 1;
             label7.Text = "Área:";
-            label7.Click += label7_Click;
             // 
             // label2
             // 
