@@ -123,10 +123,10 @@ namespace AnalisisNumerico2024
                 St += Math.Pow(sumY / n - punto[1], 2);
                 Sr += Math.Pow(a1 * punto[0] + a0 - punto[1], 2);
             }
-            double r = Math.Sqrt(((St - Sr) / St) * 100);
+            double r = Math.Sqrt(((St - Sr) / St)) * 100;
             FuncionObtenida.Text = $"y = ({Math.Round(a1, 3)})x +  ({Math.Round(a0, 3)})";
             Correccion.Text = $"{Math.Round((r), 2)}%";
-            if (Math.Round((r * 10), 2) > tolerancia)
+            if (Math.Round(r, 2) > tolerancia)
             {
                 EfectividadAjuste.Text = "El ajuste es aceptable.";
             }
@@ -177,7 +177,14 @@ namespace AnalisisNumerico2024
                 }
                 signo = ai > 0 ? "+" : string.Empty;
             }
+            double sumY = 0;
+            foreach (double[] punto2 in PuntosCargados)
+            {
+                sumY += punto2[1];
+            }
+            int n = PuntosCargados.Count();
             double x = 0, y = 0;
+            double Sr = 0, St = 0;
             foreach (double[] punto in PuntosCargados)
             {
                 x = punto[0];
@@ -186,28 +193,22 @@ namespace AnalisisNumerico2024
                 for (int i = 0; i < vectorResultado.Count(); i++)
                 {
                     suma += vectorResultado[i] * Math.Pow(x, i);
-                }
-                double sumY = 0;
-                foreach (double[] punto2 in PuntosCargados)
-                {
-                    sumY += punto2[1];
-                }
-                double Sr = 0, St = 0;
+                }                
                 Sr += Math.Pow(suma - y, 2);
-                St += Math.Pow(sumY - y, 2);
-                double r = Math.Sqrt(((St - Sr) / St) * 100);
-                FuncionObtenida.Text = $"{funcion}";
-                Correccion.Text = $"{Math.Round((r), 2)}%";
-                if (Math.Round((r * 10), 2) > tolerancia)
-                {
-                    EfectividadAjuste.Text = "El ajuste es aceptable.";
-                }
-                else
-                {
-                    EfectividadAjuste.Text = "El ajuste no es aceptable.";
-                }
-                graficador.Graficar(PuntosCargados, FuncionObtenida.Text);
+                St += Math.Pow(sumY / n - y, 2);                
             }
+            double r = Math.Sqrt(((St - Sr) / St)) * 100;
+            FuncionObtenida.Text = $"{funcion}";
+            Correccion.Text = $"{Math.Round(r, 4)}%";
+            if (Math.Round((r * 10), 2) > tolerancia)
+            {
+                EfectividadAjuste.Text = "El ajuste es aceptable.";
+            }
+            else
+            {
+                EfectividadAjuste.Text = "El ajuste no es aceptable.";
+            }
+            graficador.Graficar(PuntosCargados, FuncionObtenida.Text);
         }
         public double[,] GenerarMatrizPolinomial(int grado, List<double[]> puntosCargados)
         {
