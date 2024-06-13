@@ -36,7 +36,7 @@
             TextBoxXi = new TextBox();
             label8 = new Label();
             button1 = new Button();
-            label6 = new Label();
+            IntervaloLabel = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -65,7 +65,7 @@
             splitContainer1.Panel1.Controls.Add(TextBoxXi);
             splitContainer1.Panel1.Controls.Add(label8);
             splitContainer1.Panel1.Controls.Add(button1);
-            splitContainer1.Panel1.Controls.Add(label6);
+            splitContainer1.Panel1.Controls.Add(IntervaloLabel);
             splitContainer1.Panel1.Controls.Add(label5);
             splitContainer1.Panel1.Controls.Add(label4);
             splitContainer1.Panel1.Controls.Add(label3);
@@ -139,14 +139,14 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // label6
+            // IntervaloLabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(12, 139);
-            label6.Name = "label6";
-            label6.Size = new Size(165, 15);
-            label6.TabIndex = 4;
-            label6.Text = "Cantidad de subIntervalos (n):";
+            IntervaloLabel.AutoSize = true;
+            IntervaloLabel.Location = new Point(12, 139);
+            IntervaloLabel.Name = "IntervaloLabel";
+            IntervaloLabel.Size = new Size(165, 15);
+            IntervaloLabel.TabIndex = 4;
+            IntervaloLabel.Text = "Cantidad de subIntervalos (n):";
             // 
             // label5
             // 
@@ -237,7 +237,7 @@
 
         private SplitContainer splitContainer1;
         private Button button1;
-        private Label label6;
+        private Label IntervaloLabel;
         private Label label5;
         private Label label4;
         private Label label3;
