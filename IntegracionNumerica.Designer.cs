@@ -192,6 +192,7 @@
             // 
             txtResultado.Location = new Point(99, 49);
             txtResultado.Name = "txtResultado";
+            txtResultado.ReadOnly = true;
             txtResultado.Size = new Size(151, 23);
             txtResultado.TabIndex = 2;
             // 

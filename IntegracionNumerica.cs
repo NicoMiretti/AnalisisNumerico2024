@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace AnalisisNumerico2024
 {
     public partial class IntegracionNumerica : Form
@@ -175,22 +176,28 @@ namespace AnalisisNumerico2024
             {
                 case 0:
                     resultado = CalcularIntegralTrapeciosSimple(funcion, xi, xd);
+                    Intervalo.Enabled = false;
                     break;
                 case 1:
                     resultado = CalcularIntegralTrapeciosMultiples(funcion, xi, xd, intervalos);
+                    Intervalo.Enabled = true;
                     break;
                 case 2:
                     resultado = CalcularIntegralSimpson1_3Simple(funcion, xi, xd);
+                    Intervalo.Enabled = false;
                     break;
                 case 3:
                     resultado = CalcularIntegralSimpson1_3Multiple(funcion, xi, xd, intervalos);
+                    Intervalo.Enabled = true;
                     break;
                 case 4:
                     resultado = CalcularIntegralAmbosMetodosSimpson(funcion, xi, xd,intervalos);
+                    Intervalo.Enabled = true;
                     break;
                 default:
                     break;
             }
+            resultado = Math.Round(resultado, 5);
             txtResultado.Text = resultado.ToString();
         }
     }
