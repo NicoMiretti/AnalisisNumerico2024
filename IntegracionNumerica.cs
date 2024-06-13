@@ -123,8 +123,9 @@ namespace AnalisisNumerico2024
             if (Funcion.Sintaxis(funcion, 'x'))
             {
                 double h = (xd - xi) / n;
-                //double sumPares = 0, sumImpares = 0;
+                double sumPares = 0, sumImpares = 0;
                 double resultado = 0;
+                double resultado2 = 0;
                 bool simpson3_8Hecho = false;
 
                 for (int i = 1; i < n; i++)
@@ -138,11 +139,21 @@ namespace AnalisisNumerico2024
                     }
                     if (i % 2 == 0)
                     {
-                        double nuevoXd = xi + h * (n - 3);
-                        resultado += CalcularIntegralSimpson1_3Multiple(funcion, xi, nuevoXd, n);
-                    }
+                        for (i = 1; i < n; i++)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                sumPares += Funcion.EvaluaFx(xi + (h * i));
+                            }
+                            else
+                            {
+                                sumImpares += Funcion.EvaluaFx(xi + (h * i));
+                            }
+                        }
+                        resultado2 = (h / 3) * (Funcion.EvaluaFx(xi) + 4 * sumImpares + 2 * sumPares + Funcion.EvaluaFx(xd));
+                    }                    
                 }
-                return resultado;
+                return resultado + resultado2;
             }
             throw new Exception("Función Mal Ingresada");
         }
