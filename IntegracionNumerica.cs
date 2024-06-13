@@ -147,7 +147,7 @@ namespace AnalisisNumerico2024
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 4)
+            if (comboBox1.SelectedIndex == 1 || comboBox1.SelectedIndex == 3 || comboBox1.SelectedIndex == 4 || comboBox1.SelectedIndex == 5)
             {
                 Intervalo.Visible = true;
                 IntervaloLabel.Visible = true;
@@ -167,7 +167,7 @@ namespace AnalisisNumerico2024
             string funcion = IngresarFuncion.Text;
             double xi = Convert.ToDouble(TextBoxXi.Text);
             double xd = Convert.ToDouble(TextBoxXd.Text);
-            int intervalos = Intervalo.Text != "" ? Convert.ToInt32(Intervalo.Text) : 0  ;
+            int intervalos = Intervalo.Text != "" ? Convert.ToInt32(Intervalo.Text) : 0;
 
             switch (comboBox1.SelectedIndex)
             {
@@ -192,6 +192,7 @@ namespace AnalisisNumerico2024
                     resultado = CalcularIntegralAmbosMetodosSimpson(funcion, xi, xd,intervalos);
                     break;
                 default:
+
                     break;
             }
             resultado = Math.Round(resultado, 5);
