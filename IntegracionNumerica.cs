@@ -22,6 +22,7 @@ namespace AnalisisNumerico2024
             IntervaloLabel.Visible = false;
         }
 
+        Calculo Funcion = new Calculo();
         double CalcularIntegralTrapeciosSimple(string funcion, double xi, double xd)
         {
             Calculo Funcion = new Calculo();
@@ -38,7 +39,7 @@ namespace AnalisisNumerico2024
 
         private double CalcularIntegralTrapeciosMultiples(string funcion, double xi, double xd, int n)
         {
-            Calculo Funcion = new Calculo();
+
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
@@ -58,7 +59,6 @@ namespace AnalisisNumerico2024
 
         private double CalcularIntegralSimpson1_3Simple(string funcion, double xi, double xd)
         {
-            Calculo Funcion = new Calculo();
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
@@ -74,7 +74,6 @@ namespace AnalisisNumerico2024
         private double CalcularIntegralSimpson1_3Multiple(string funcion, double xi, double xd, int n)
 
         {
-            Calculo Funcion = new Calculo();
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
@@ -104,7 +103,6 @@ namespace AnalisisNumerico2024
 
         private double CalcularIntegralSimpson3_8(string funcion, double xi, double xd)
         {
-            Calculo Funcion = new Calculo();
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
@@ -118,7 +116,6 @@ namespace AnalisisNumerico2024
 
         private double CalcularIntegralAmbosMetodosSimpson(string funcion, double xi, double xd, int n)
         {
-            Calculo Funcion = new Calculo();
 
             if (Funcion.Sintaxis(funcion, 'x'))
             {
